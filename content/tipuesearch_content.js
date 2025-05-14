@@ -1,1 +1,1 @@
-var tipuesearch = {"pages": [{'title': 'About', 'text': '國立找到田科技大學機械設計工程系 \n National Found-Tien University of Technology \n 歡應來到NFT科技大學 \n 這是我們小夥伴耍腦的地方，這裡能讓你獲得到你想要的東西。 \n \n \n \n \n', 'tags': '', 'url': 'About.html'}]};
+var tipuesearch = {"pages": [{'title': '關於我們', 'text': '國立找到田科技大學機械設計工程系 \n National Found-Tien University of Technology \n 歡迎來到NFT科技大學 \n 這是我們小夥伴耍腦的地方，這裡能讓你獲得到你想要的東西。 \n \n \n \n \n \n', 'tags': '', 'url': '關於我們.html'}]};
