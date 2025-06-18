@@ -1,11 +1,215 @@
-<h1>About</h1>
+<h1>關於我們</h1>
 <p style="text-align: center;">國立找到田科技大學機械設計工程系</p>
 <p style="text-align: center;"><strong>National Found-Tien University of Technology</strong></p>
 <p style="text-align: center;">歡迎來到NFT科技大學</p>
-<p style="text-align: center;">這是我們小夥伴耍腦的地方，這裡能讓你獲得到你想要的東西。</p>
+<p style="text-align: center;">我們跟早稻田沒有任何關係</p>
+<p style="text-align: center;">純粹是學校旁邊都是田</p>
+<p style="text-align: center;">這是我們小夥伴耍腦的地方，希望這裡能讓你獲得到你想要的東西。</p>
 <p style="text-align: center;"><img alt="" height="800" src="/images/设计搞笑 ICO 图.png" width="800"/></p>
+<h1>痛苦的學科</h1>
+<p style="text-align: center;">這裡專門放讓我感到痛苦的東西</p>
+<h1>The Server Is Down</h1>
+<p style="text-align: center;">這裡專門放一些解決奇怪問題的小方法</p>
+<p style="padding-left: 180px;"><img alt="" height="659" src="/images/17j3qrmr9bf31.jpg" width="800"/></p>
+<h1>WCM2025</h1><h2>東西向拔蘿蔔</h2>
+<h3>老師版</h3>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def turn(n):
+    for i in range(n):
+        turn_left()
+        
+def turn_right():
+    for i in range(3):
+        turn_left()
+        
+def new_move(n):
+    for i in range(n):
+        move()
+        
+def harvest_one_row():
+    global object_taken
+    while object_here() and object_taken &lt; 36:
+        take()
+        object_taken += 1
+    # 只要沒達到 36 就繼續 move
+    if object_taken &lt; 36:
+        move()
+        
+def is_facing_east():
+    # 記錄原本面向的方向
+    count = 0
+    while not is_facing_north():
+        turn_left()
+        count += 1
+        if count == 4:
+            break
+    # 轉到北方後，左轉三次就會面向東
+    turn(3)
+    return True
+
+object_taken = 0
+# move to the field
+new_move(2)
+turn_left()
+new_move(2)
+
+done = False
+while is_facing_east() and not done:
+    for i in range(2):
+        # 面向東直走收成
+        for j in range(6):
+            harvest_one_row()
+            if object_taken &gt;= 36:
+                done = True
+                break
+        if done:
+            break
+        for k in range(2):
+            turn_left()
+            move()
+        # 面向西直走收成
+        for j in range(6):
+            harvest_one_row()
+            if object_taken &gt;= 36:
+                done = True
+                break
+        if done:
+            break
+        for k in range(2):
+            turn_right()
+            move()
+    if object_taken &gt;= 36:
+        print("task completed!")
+        break</pre>
+<h3>我的版本</h3>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def is_facing_west():
+    turn(3)
+    result = is_facing_north()
+    turn_left()
+    return result
+
+def turn(times):  # 改参数名避免覆盖内置类型
+    for i in range(times):
+        turn_left()
+        
+def new_move(steps):  # 改参数名避免覆盖内置类型
+    for i in range(steps):
+        move()
+        
+def harvest_one_row():
+    while object_here():
+        take()
+    else:
+        move()
+
+# move to the field
+turn_left()
+new_move(2)
+turn(3)
+new_move(2)
+
+# 原有的3行收割逻辑
+for i in range(3):
+    while is_facing_west():
+        for _ in range(6):
+            harvest_one_row()
+        for _ in range(2):
+            turn(3)
+            move() 
+    else:
+        for _ in range(6):
+            harvest_one_row()
+        for _ in range(2):
+            turn(1)
+            move()
+
+# 新增：收割剩余5个胡萝卜的程序
+def harvest_remaining_carrots():
+ 
+    
+    # 收割剩余的5个胡萝卜（具体路径需要根据实际布局调整）
+    for _ in range(6):
+        while object_here():
+            take()
+        move()  # 移动到下一个位置
+
+# 执行剩余胡萝卜的收割
+harvest_remaining_carrots()
+new_move(1)</pre>
+<p></p><h2>wiat參考</h2>
+<pre class="brush:csharp;auto-links:false;toolbar:false" contenteditable="false"># pip install waitress
+from waitress import serve
+from cmsimde.flaskapp import app
+
+if __name__ == "__main__":
+    serve(app, host="::1", port=8080, threads=8)</pre><h3>nginx 參考</h3>
+<pre class="brush:csharp;auto-links:false;toolbar:false" contenteditable="false"></pre>
+<pre class="brush:csharp;auto-links:false;toolbar:false" contenteditable="false">worker_processes  auto;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+
+    # HTTP 服务器（仅 IPv6）
+    server {
+        listen [::]:80;  # 仅监听 IPv6
+        server_name w51.mde.nfu.edu.tw;
+
+        root html;
+        index index.html index.htm;
+
+        # 静态资源路径
+        location /reeborg {
+            alias html/reeborg;
+            try_files $uri $uri/ =404;
+        }
+
+        # 强制跳转到 HTTPS（IPv6 地址）
+        location / {
+            return 301 https://$host$request_uri;
+        }
+    }
+
+    # HTTPS 服务器（仅 IPv6）
+    server {
+        listen [::]:443 ssl;  # 仅监听 IPv6
+        server_name w51.mde.nfu.edu.tw;
+
+        # SSL 证书配置
+        ssl_certificate      conf/fullchain.pem;
+        ssl_certificate_key  conf/privkey.pem;
+
+        # 安全协议和加密套件
+        ssl_protocols TLSv1.2 TLSv1.3;
+        ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384';
+        ssl_prefer_server_ciphers on;
+        ssl_session_cache shared:SSL:10m;
+        ssl_session_timeout 1d;
+
+        # 代理到后端的 IPv6 地址（确保后端服务监听 [::1] 或全局 IPv6）
+        location / {
+            proxy_pass http://[::1]:8080;  # 必须使用 IPv6 地址
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # 静态资源路径（直接由 Nginx 处理）
+        location /reeborg {
+            alias html/reeborg;
+            try_files $uri $uri/ =404;
+        }
+    }
+}</pre>
 <p></p>
-<p></p>
+<h1>出公差囉！</h1>
+<p style="text-align: center;">這裡專門放一些出公差的小記錄</p>
 <p>
 <script src="https://unpkg.com/three@0.144.0/build/three.js" type="text/javascript"></script>
 </p>

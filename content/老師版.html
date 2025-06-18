@@ -2,7 +2,7 @@
         <head>
         <title>找到田科技大學</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -141,15 +141,75 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content"> <a href='痛苦的學科.html'>Next</a> >> 痛苦的學科<br /><h1>關於我們</h1>
-<p style="text-align: center;">國立找到田科技大學機械設計工程系</p>
-<p style="text-align: center;"><strong>National Found-Tien University of Technology</strong></p>
-<p style="text-align: center;">歡迎來到NFT科技大學</p>
-<p style="text-align: center;">我們跟早稻田沒有任何關係</p>
-<p style="text-align: center;">純粹是學校旁邊都是田</p>
-<p style="text-align: center;">這是我們小夥伴耍腦的地方，希望這裡能讓你獲得到你想要的東西。</p>
-<p style="text-align: center;"><img alt="" height="800" src="./../images/设计搞笑 ICO 图.png" width="800"/></p>
-<br /> <a href='痛苦的學科.html'>Next</a> >> 痛苦的學科</div>
+    <div id="tipue_search_content">東西向拔蘿蔔 << <a href='東西向拔蘿蔔.html'>Previous</a> <a href='我的版本.html'>Next</a> >> 我的版本<br /><h1>老師版</h1>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def turn(n):
+    for i in range(n):
+        turn_left()
+        
+def turn_right():
+    for i in range(3):
+        turn_left()
+        
+def new_move(n):
+    for i in range(n):
+        move()
+        
+def harvest_one_row():
+    global object_taken
+    while object_here() and object_taken &lt; 36:
+        take()
+        object_taken += 1
+    # 只要沒達到 36 就繼續 move
+    if object_taken &lt; 36:
+        move()
+        
+def is_facing_east():
+    # 記錄原本面向的方向
+    count = 0
+    while not is_facing_north():
+        turn_left()
+        count += 1
+        if count == 4:
+            break
+    # 轉到北方後，左轉三次就會面向東
+    turn(3)
+    return True
+
+object_taken = 0
+# move to the field
+new_move(2)
+turn_left()
+new_move(2)
+
+done = False
+while is_facing_east() and not done:
+    for i in range(2):
+        # 面向東直走收成
+        for j in range(6):
+            harvest_one_row()
+            if object_taken &gt;= 36:
+                done = True
+                break
+        if done:
+            break
+        for k in range(2):
+            turn_left()
+            move()
+        # 面向西直走收成
+        for j in range(6):
+            harvest_one_row()
+            if object_taken &gt;= 36:
+                done = True
+                break
+        if done:
+            break
+        for k in range(2):
+            turn_right()
+            move()
+    if object_taken &gt;= 36:
+        print("task completed!")
+        break</pre>
+<br />東西向拔蘿蔔 << <a href='東西向拔蘿蔔.html'>Previous</a> <a href='我的版本.html'>Next</a> >> 我的版本</div>
         
     <!-- footer -->
       <div class="container">

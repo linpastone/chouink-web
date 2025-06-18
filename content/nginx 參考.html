@@ -2,7 +2,7 @@
         <head>
         <title>找到田科技大學</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -141,15 +141,73 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content"> <a href='痛苦的學科.html'>Next</a> >> 痛苦的學科<br /><h1>關於我們</h1>
-<p style="text-align: center;">國立找到田科技大學機械設計工程系</p>
-<p style="text-align: center;"><strong>National Found-Tien University of Technology</strong></p>
-<p style="text-align: center;">歡迎來到NFT科技大學</p>
-<p style="text-align: center;">我們跟早稻田沒有任何關係</p>
-<p style="text-align: center;">純粹是學校旁邊都是田</p>
-<p style="text-align: center;">這是我們小夥伴耍腦的地方，希望這裡能讓你獲得到你想要的東西。</p>
-<p style="text-align: center;"><img alt="" height="800" src="./../images/设计搞笑 ICO 图.png" width="800"/></p>
-<br /> <a href='痛苦的學科.html'>Next</a> >> 痛苦的學科</div>
+    <div id="tipue_search_content">wiat參考 << <a href='wiat參考.html'>Previous</a> <a href='出公差囉！.html'>Next</a> >> 出公差囉！<br /><h1>nginx 參考</h1>
+<pre class="brush:csharp;auto-links:false;toolbar:false" contenteditable="false"></pre>
+<pre class="brush:csharp;auto-links:false;toolbar:false" contenteditable="false">worker_processes  auto;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+
+    # HTTP 服务器（仅 IPv6）
+    server {
+        listen [::]:80;  # 仅监听 IPv6
+        server_name w51.mde.nfu.edu.tw;
+
+        root html;
+        index index.html index.htm;
+
+        # 静态资源路径
+        location /reeborg {
+            alias html/reeborg;
+            try_files $uri $uri/ =404;
+        }
+
+        # 强制跳转到 HTTPS（IPv6 地址）
+        location / {
+            return 301 https://$host$request_uri;
+        }
+    }
+
+    # HTTPS 服务器（仅 IPv6）
+    server {
+        listen [::]:443 ssl;  # 仅监听 IPv6
+        server_name w51.mde.nfu.edu.tw;
+
+        # SSL 证书配置
+        ssl_certificate      conf/fullchain.pem;
+        ssl_certificate_key  conf/privkey.pem;
+
+        # 安全协议和加密套件
+        ssl_protocols TLSv1.2 TLSv1.3;
+        ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384';
+        ssl_prefer_server_ciphers on;
+        ssl_session_cache shared:SSL:10m;
+        ssl_session_timeout 1d;
+
+        # 代理到后端的 IPv6 地址（确保后端服务监听 [::1] 或全局 IPv6）
+        location / {
+            proxy_pass http://[::1]:8080;  # 必须使用 IPv6 地址
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # 静态资源路径（直接由 Nginx 处理）
+        location /reeborg {
+            alias html/reeborg;
+            try_files $uri $uri/ =404;
+        }
+    }
+}</pre>
+<p></p><br />wiat參考 << <a href='wiat參考.html'>Previous</a> <a href='出公差囉！.html'>Next</a> >> 出公差囉！</div>
         
     <!-- footer -->
       <div class="container">
