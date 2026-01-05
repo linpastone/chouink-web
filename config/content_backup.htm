@@ -9,7 +9,9 @@
 <p style="text-align: center;"></p>
 <h1>hello world</h1>
 <p>這邊專門放一些有關於MDE協同設計室的資料</p>
-<h2>PVE</h2><h3>PVE備份與還原</h3>
+<h2>PVE</h2>
+<p>2026/01/05 更新 PVE備份與還原</p><h3>PVE備份與還原</h3>
+<p>2026/01/05更新</p>
 <p>目前在網頁GUI下停機備份17::3 DNS伺服器</p>
 <p>接下來使用 scp指令將備份後的檔案傳送至17:2025::10</p>
 <pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">scp 舊主機檔案位置 root@[新主機IP]:/var/lib/vz/dump/</pre>
@@ -17,7 +19,17 @@
 <pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">scp /var/lib/vz/dump/vzdump-qemu-exvm.vma.zst root@192.168.1.12:/var/lib/vz/dump/</pre>
 <p></p>
 <p>到當下主機中的local內 還原備份</p>
-<p>VMID可更改</p><h2>webodm</h2><h1>大二上期末資料</h1>
+<p>VMID可更改</p><h2>webodm</h2>
+<h3>安裝</h3>
+<p>以debian 130 安裝</p>
+<h3>開啟指令</h3>
+<p>切換至root 模式</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">su -u</pre>
+<p>debian內進入到WebODM(大小寫要一樣)</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">cd WebODM</pre>
+<p>運行WebODM</p>
+<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">./webodm.sh start</pre>
+<p></p><h1>大二上期末資料</h1>
 <h2>藝術史</h2>
 <p>感謝老師願意到我的網站逛逛~</p>
 <p>以下是這次期末報告的內容，建議老師在網頁上觀看才能獲得最佳體驗窩~</p>
