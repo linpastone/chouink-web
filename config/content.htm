@@ -233,8 +233,41 @@
 <p><strong>第二階段：重新來過</strong></p>
 <p style="padding-left: 30px;">我在查看robo flow的過程中，我發現taco的數據集大部分是壓扁，形狀、外觀都沒有那麼原始的垃圾，所以第二階段我決定先專注訓練寶特瓶的模型。</p>
 <p style="padding-left: 30px;"></p>
+<p style="padding-left: 30px;">首先我在<span>Roboflow Universe 上面尋找到了一個寶特瓶的訓練集，總共3700多張照片，我把它fork回來我的workspace。</span></p>
+<p style="padding-left: 30px;"><span><img alt="" height="414" src="/images/數據fork.png" width="554"/></span></p>
 <p style="padding-left: 30px;"></p>
+<p style="padding-left: 30px;">fork回來後我調整了一下預處理 (Preprocessing)，我設定了以下兩項</p>
 <p style="padding-left: 30px;"></p>
+<ul>
+<li>
+<p data-path-to-node="7,0,0"><b data-index-in-node="0" data-path-to-node="7,0,0">Auto-Orient:</b> 開啟（確保手機拍照的角度不會讓模型困惑）。</p>
+</li>
+<li>
+<p data-path-to-node="7,1,0"><b data-index-in-node="0" data-path-to-node="7,1,0">Resize:</b> 設定為 <code data-index-in-node="12" data-path-to-node="7,1,0">640x640</code> (Stretch)。這是 YOLO 系列最標準的輸入大小。</p>
+</li>
+</ul>
+<p style="padding-left: 30px;"><img alt="" height="515" src="/images/數據預處理.png" width="478"/></p>
+<p style="padding-left: 30px;"></p>
+<p style="padding-left: 30px;">接下來我對照片進行數據增強 (Augmentation)，以下是我的設定</p>
+<p style="padding-left: 30px;"></p>
+<ul>
+<li>
+<p data-path-to-node="10,0,0"><b data-index-in-node="0" data-path-to-node="10,0,0">Horizontal Flip:</b> 開啟。</p>
+</li>
+<li>
+<p data-path-to-node="10,1,0"><b data-index-in-node="0" data-path-to-node="10,1,0">Rotation:</b> 設在 <code data-index-in-node="13" data-path-to-node="10,1,0">-15°</code> 到 <code data-index-in-node="20" data-path-to-node="10,1,0">+15°</code> 之間（模擬手持傾斜）。</p>
+</li>
+<li>
+<p data-path-to-node="10,2,0"><b data-index-in-node="0" data-path-to-node="10,2,0">Brightness:</b> 設在 <code data-index-in-node="15" data-path-to-node="10,2,0">-15%</code> 到 <code data-index-in-node="22" data-path-to-node="10,2,0">+15%</code>（模擬不同天氣/室內光線）。</p>
+</li>
+<li>
+<p data-path-to-node="10,3,0"><b data-index-in-node="0" data-path-to-node="10,3,0">Blur:</b> 少量（模擬相機晃動或對焦不準）。</p>
+</li>
+</ul>
+<p style="padding-left: 30px;"><img alt="" height="400" src="/images/數據增強.png" width="554"/></p>
+<p></p>
+<p></p>
+<p></p>
 <p style="padding-left: 30px;"></p><h1>RTET 看這邊</h1>
 <p>這裡主要放一些團隊的資源及設備</p><h2>團隊信箱、雲端</h2>
 <p>目前還在配置中</p>
