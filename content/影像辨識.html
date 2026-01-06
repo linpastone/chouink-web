@@ -216,6 +216,7 @@ img.add_border {
 <p style="padding-left: 30px;">在我反覆地訓練更多次模型、更換數據集、更換模型大小，實測出來的效果都非常的不理想。</p>
 <p style="padding-left: 30px;">並且剛好我的colab上限次數也用盡了，正當我反覆尋找問題時......</p>
 <p><strong>第二階段：重新來過</strong></p>
+<p>1.數據收集、數據處理</p>
 <p style="padding-left: 30px;">我在查看robo flow的過程中，我發現taco的數據集大部分是壓扁，形狀、外觀都沒有那麼原始的垃圾，所以第二階段我決定先專注訓練寶特瓶的模型。</p>
 <p style="padding-left: 30px;"></p>
 <p style="padding-left: 30px;">首先我在<span>Roboflow Universe 上面尋找到了一個寶特瓶的訓練集，總共3700多張照片，我把它fork回來我的workspace。</span></p>
@@ -251,8 +252,73 @@ img.add_border {
 </ul>
 <p style="padding-left: 30px;"><img alt="" height="400" src="./../images/數據增強.png" width="554"/></p>
 <p></p>
-<p></p>
-<p></p>
+<p>2.訓練環境架設</p>
+<p style="padding-left: 30px;">我使用miniconda架設環境，以下是使用到的指令。</p>
+<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">#PowerShell安裝miniconda
+Start-Process -FilePath "miniconda.exe" -ArgumentList "/S", "/InstallationType=JustMe", "/AddToPath=1" -Wait
+
+#檢查conda
+conda --version
+
+# 建立環境 (命名為 bottle_detect)
+conda create -n bottle_detect python=3.9 -y
+
+# 啟動環境
+conda activate bottle_detect
+
+# 安裝必要的基礎套件
+pip install numpy pandas opencv-python matplotlib</pre>
+<p style="padding-left: 30px;">安裝的過程中我遇到了無法偵測核心的問題，要安裝ipykernel。</p>
+<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">conda install ipykernel</pre>
+<p style="padding-left: 30px;">下載數據集</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import os
+from roboflow import Roboflow
+
+# 初始化 Roboflow
+rf = Roboflow(api_key="你的_API_KEY") # &lt;-- 記得換成你網頁上的 Key
+project = rf.workspace("你的工作區名稱").project("你的專案名稱")
+version = project.version("你的版本號") # &lt;-- 填入那個 3700 張的版本號
+
+# 設定下載路徑
+dataset_dir = "F:/code/bottle_dataset"
+
+# 執行下載 (YOLOv8 格式)
+dataset = version.download("yolov8", location=dataset_dir)
+
+print(f"✅ 數據下載完成！路徑：{dataset_dir}")</pre>
+<p style="padding-left: 30px;">AI建議我對圖片進行檢查</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import cv2
+import matplotlib.pyplot as plt
+import glob
+
+# 隨機抓 3 張訓練圖來看看增強後的樣子
+test_images = glob.glob(f"{dataset_dir}/train/images/*.jpg")[:3]
+
+for img_path in test_images:
+    img = cv2.imread(img_path)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    plt.figure(figsize=(8, 5))
+    plt.imshow(img)
+    plt.axis('off')
+    plt.show()</pre>
+<p style="padding-left: 30px;"><img caption="false" height="507" src="./../images/AI程式.png" width="554"/></p>
+<p style="padding-left: 30px;">檢查模型路徑 驗證環境與資料結構</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import os
+import yaml
+
+# 檢查 data.yaml
+yaml_path = "F:/code/bottle_dataset/data.yaml"
+
+with open(yaml_path, 'r') as f:
+    data_config = yaml.safe_load(f)
+
+print(f"✅ 類別名稱: {data_config['names']}")
+print(f"✅ 訓練集路徑: {data_config['train']}")</pre>
+<p style="padding-left: 30px;"></p>
+<p style="padding-left: 30px;"></p>
+<p style="padding-left: 30px;"></p>
+<p style="padding-left: 30px;"></p>
+<p style="padding-left: 30px;"></p>
 <p style="padding-left: 30px;"></p><br />藝術史 << <a href='藝術史.html'>Previous</a> <a href='RTET 看這邊.html'>Next</a> >> RTET 看這邊</div>
         
     <!-- footer -->
