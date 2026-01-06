@@ -157,21 +157,85 @@
 <p data-path-to-node="32,2,0"><b data-index-in-node="0" data-path-to-node="32,2,0">網站</b><b data-index-in-node="0" data-path-to-node="32,2,0">製作</b>：cmsimde<span> </span></p>
 </li>
 </ul><h2>影像辨識</h2>
-<p>這次影像辨識中我想要製作一套可以分類回收垃圾的影像辨識系統</p>
-<p>動機：虎尾鎮曾經因為多次垃圾分類沒有分類好，導致垃圾被停運好幾次，其實有時候我自己也很懶得分類，我希望可以製作一個可以自動分類垃圾的垃圾桶。</p>
-<p>預期目標：這次我會先以生活中常見的物品進行辨識，我希望他可以分辨常見的寶特瓶、鐵鋁罐、紙類，在和實體機構進行配合。</p>
-<hr/>
 <p>1.</p>
-<p></p>
-<p></p>
+<p><strong>動機</strong>：虎尾鎮曾經因為多次垃圾分類沒有分類好，導致垃圾被停運好幾次，其實有時候我自己也很懶得分類，我希望可以製作一個可以自動分類垃圾的垃圾桶。</p>
+<p><strong>預期目標</strong>：這次我會先以生活中常見的物品進行辨識，我希望他可以分辨常見的寶特瓶、鐵鋁罐、紙類，在和實體機構進行配合。</p>
+<p><strong>環境保護趨勢</strong><b data-index-in-node="0" data-path-to-node="5,0,0">：</b> 全球資源回收需求日益增加，但人工分類成本高且容易出錯。</p>
+<p><strong>技術結合</strong>： 結合深度學習（YOLO）與電腦視覺（OpenCV），實現自動化資源回收系統。</p>
+<p><strong>應用場景</strong>： 智慧垃圾桶原型。透過鏡頭自動辨識垃圾種類，導引至正確的回收桶。</p>
 <hr/>
-<p>2.使用工具及技術</p>
-<p></p>
+<p>2.</p>
+<p>模型架構</p>
+<ul data-path-to-node="9">
+<li>
+<p data-path-to-node="9,0,0"><b data-index-in-node="0" data-path-to-node="9,0,0">使用的模型：</b> <b data-index-in-node="7" data-path-to-node="9,0,0">YOLOv8 Nano (YOLOv8n)</b>。</p>
+</li>
+<li>
+<p data-path-to-node="9,1,0"><b data-index-in-node="0" data-path-to-node="9,1,0">選擇原因：</b> 模型輕量化、推論速度快（約 1.8ms），非常適合部署在資源有限的硬體設備（如智慧垃圾桶的嵌入式系統）。</p>
+</li>
+</ul>
+<h4 data-path-to-node="10"><b data-index-in-node="0" data-path-to-node="10"></b></h4>
 <hr/>
-<p>3.資料集準備</p>
+<h4 data-path-to-node="12"><b data-index-in-node="0" data-path-to-node="12"></b></h4>
+<p>3.使用工具及技術</p>
+<p>第一階段</p>
 <ul>
-<li>資料來源：TACO (Trash Annotations in Context)</li>
-</ul><h1>RTET 看這邊</h1>
+<li>
+<p data-path-to-node="13,0,0"><b data-index-in-node="0" data-path-to-node="13,0,0">訓練環境：</b> Google Colab (使用 T4 GPU 加速)。</p>
+</li>
+<li>
+<p data-path-to-node="13,1,0"><b data-index-in-node="0" data-path-to-node="13,1,0">訓練參數：</b> Epochs=50, Imgsz=512。</p>
+</li>
+<li>
+<p data-path-to-node="13,2,0"><b data-index-in-node="0" data-path-to-node="13,2,0">推論環境：</b> 本地 Windows 電腦、Miniconda 虛擬環境、OpenCV 影像串接。</p>
+</li>
+</ul>
+<p>第二階段</p>
+<ul>
+<li>
+<p data-path-to-node="13,0,0"><b data-index-in-node="0" data-path-to-node="13,0,0">訓練環境：</b><span> </span>PVE虛擬機 (使用 GTX1070 GPU 加速)。</p>
+</li>
+<li>
+<p data-path-to-node="13,1,0"><b data-index-in-node="0" data-path-to-node="13,1,0">訓練參數：</b><span> </span>Epochs=50, Imgsz=512。</p>
+</li>
+<li>
+<p data-path-to-node="13,2,0"><b data-index-in-node="0" data-path-to-node="13,2,0">推論環境：</b><span> </span>本地 Windows 電腦、Miniconda 虛擬環境、OpenCV 影像串接。</p>
+</li>
+</ul>
+<p></p>
+<hr/>
+<p>4.資料集準備</p>
+<p>第一階段</p>
+<ul>
+<li>
+<p data-path-to-node="11,0,0"><b data-index-in-node="0" data-path-to-node="11,0,0">資料來源：</b> TACO Dataset（開源垃圾資料集）。</p>
+</li>
+<li>
+<p data-path-to-node="11,1,0"><b data-index-in-node="0" data-path-to-node="11,1,0">資料標註與合併：</b> 使用 <b data-index-in-node="12" data-path-to-node="11,1,0">Roboflow</b> 平台將 60 種細項分類合併為三大類：<code data-index-in-node="40" data-path-to-node="11,1,0">Plastic_Bottle</code> (寶特瓶)、<code data-index-in-node="61" data-path-to-node="11,1,0">Can</code> (鐵鋁罐)、<code data-index-in-node="71" data-path-to-node="11,1,0">Paper</code> (紙類)。</p>
+</li>
+<li>
+<p data-path-to-node="11,2,0"><b data-index-in-node="0" data-path-to-node="11,2,0">資料增強 (Augmentation)：</b> 加入旋轉 (Rotation)、模糊 (Blur) 等技術，模擬垃圾桶內複雜的光線與拍攝角度。</p>
+</li>
+</ul>
+<p>第二階段</p>
+<p></p>
+<hr/>
+<p>5.製作過程紀錄</p>
+<p></p>
+<p>  第一階段：失敗過程</p>
+<p style="padding-left: 30px;">我第一次採用taco內的資料集進行訓練寶特瓶、鐵鋁罐、紙類，訓練出來的圖表收斂的不錯，但是實際推理出來的效果不OK。</p>
+<p style="padding-left: 30px;"><span>詢問AI後得知，其實圖表顯示出來模型訓練得很成功，不過推理出來的效果如下，辨識效果非常不理想。</span></p>
+<p style="padding-left: 30px;"><img alt="模型圖表" height="414" src="/images/模型結果.jpg" width="800"/></p>
+<p style="padding-left: 30px;">下圖是我推理出來後的結果</p>
+<p style="padding-left: 30px;"><img alt="" height="368" src="/images/test1.png" width="554"/></p>
+<p style="padding-left: 30px;">在我反覆地訓練更多次模型、更換數據集、更換模型大小，實測出來的效果都非常的不理想。</p>
+<p style="padding-left: 30px;">並且剛好我的colab上限次數也用盡了，正當我反覆尋找問題時......</p>
+<p>第二階段：重新來過</p>
+<p style="padding-left: 30px;">我在查看robo flow的過程中，我發現taco的數據集大部分是壓扁，形狀、外觀都沒有那麼原始的垃圾，所以第二階段我決定先專注訓練寶特瓶的模型。</p>
+<p style="padding-left: 30px;"></p>
+<p style="padding-left: 30px;"></p>
+<p style="padding-left: 30px;"></p>
+<p style="padding-left: 30px;"></p><h1>RTET 看這邊</h1>
 <p>這裡主要放一些團隊的資源及設備</p><h2>團隊信箱、雲端</h2>
 <p>目前還在配置中</p>
 <p>將會使用google workspace進行分發</p><h2>vm虛擬機器借用</h2>
