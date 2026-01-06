@@ -10,7 +10,8 @@
 <h1>hello world</h1>
 <p>這邊專門放一些有關於MDE協同設計室的資料</p>
 <h2>PVE</h2>
-<p>2026/01/05 更新 PVE備份與還原</p><h3>PVE備份與還原</h3>
+<p>2026/01/05 更新 PVE備份與還原</p>
+<h3>PVE備份與還原</h3>
 <p>2026/01/05更新</p>
 <p>目前在網頁GUI下停機備份17::3 DNS伺服器</p>
 <p>接下來使用 scp指令將備份後的檔案傳送至17:2025::10</p>
@@ -19,8 +20,10 @@
 <pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">scp /var/lib/vz/dump/vzdump-qemu-exvm.vma.zst root@192.168.1.12:/var/lib/vz/dump/</pre>
 <p></p>
 <p>到當下主機中的local內 還原備份</p>
-<p>VMID可更改</p><h2>webodm</h2>
-<p>2026/01/05 更新 webodm 安裝、開啟</p><h3>安裝</h3>
+<p>VMID可更改</p>
+<h2>webodm</h2>
+<p>2026/01/05 更新 webodm 安裝、開啟</p>
+<h3>安裝</h3>
 <p>以debian 130 安裝</p>
 <h3>開啟指令</h3>
 <p>切換至root 模式</p>
@@ -29,7 +32,8 @@
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">cd WebODM</pre>
 <p>運行WebODM</p>
 <pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">./webodm.sh start</pre>
-<p></p><h1>大二上期末資料</h1>
+<p></p>
+<h1>大二上期末資料</h1>
 <h2>藝術史</h2>
 <p>感謝老師願意到我的網站逛逛~</p>
 <p>以下是這次期末報告的內容，建議老師在網頁上觀看才能獲得最佳體驗窩~</p>
@@ -156,10 +160,11 @@
 <li>
 <p data-path-to-node="32,2,0"><b data-index-in-node="0" data-path-to-node="32,2,0">網站</b><b data-index-in-node="0" data-path-to-node="32,2,0">製作</b>：cmsimde<span> </span></p>
 </li>
-</ul><h2>影像辨識</h2>
+</ul>
+<h2>影像辨識</h2>
 <p>1.</p>
 <p><strong>動機</strong>：虎尾鎮曾經因為多次垃圾分類沒有分類好，導致垃圾被停運好幾次，其實有時候我自己也很懶得分類，我希望可以製作一個可以自動分類垃圾的垃圾桶。</p>
-<p><strong>預期目標</strong>：這次我會先以生活中常見的物品進行辨識，我希望他可以分辨常見的寶特瓶、鐵鋁罐、紙類，在和實體機構進行配合。</p>
+<p><strong>預期目標</strong>：這次我會先以生活中常見的垃圾進行辨識，我希望他可以分辨常見的寶特瓶、鐵鋁罐、紙類，在和實體機構進行配合。</p>
 <p><strong>環境保護趨勢</strong><b data-index-in-node="0" data-path-to-node="5,0,0">：</b> 全球資源回收需求日益增加，但人工分類成本高且容易出錯。</p>
 <p><strong>技術結合</strong>： 結合深度學習（YOLO）與電腦視覺（OpenCV），實現自動化資源回收系統。</p>
 <p><strong>應用場景</strong>： 智慧垃圾桶原型。透過鏡頭自動辨識垃圾種類，導引至正確的回收桶。</p>
@@ -174,7 +179,24 @@
 <p data-path-to-node="9,1,0"><b data-index-in-node="0" data-path-to-node="9,1,0">選擇原因：</b> 模型輕量化、推論速度快（約 1.8ms），非常適合部署在資源有限的硬體設備（如智慧垃圾桶的嵌入式系統）。</p>
 </li>
 </ul>
-<h4 data-path-to-node="10"><b data-index-in-node="0" data-path-to-node="10"></b></h4>
+<p style="padding-left: 30px;"><b data-index-in-node="0" data-path-to-node="4">1. 骨幹網路 (Backbone) —— 負責「看特徵」</b></p>
+<p data-path-to-node="5" style="padding-left: 60px;">這是模型的第一部分，就像人的<b data-index-in-node="14" data-path-to-node="5">眼睛和視神經</b>。</p>
+<p data-path-to-node="5" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="6,0,0">功能：</b> 它的工作是從原本的圖片中提取特徵。它會把圖片不斷縮小，提取出線條、形狀、紋理，直到變成高維度的特徵圖。</p>
+<p data-path-to-node="5" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="6,1,0">YOLOv8 的技術：</b> 使用了 <b data-index-in-node="16" data-path-to-node="6,1,0">CSPDarknet</b> 結構。</p>
+<p data-path-to-node="5" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="6,2,0">白話文：</b> 它負責看出一張圖裡哪裡是圓的、哪裡是紅色的、哪裡有邊緣。</p>
+<p style="padding-left: 30px;"><b data-index-in-node="0" data-path-to-node="7">2. 頸部 (Neck) —— 負責「整合資訊」</b></p>
+<p data-path-to-node="8" style="padding-left: 60px;">這是模型的中間部分，就像<b data-index-in-node="12" data-path-to-node="8">神經傳導系統</b>。</p>
+<p data-path-to-node="8" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="9,0,0">功能：</b> 它負責把 Backbone 提取到的「淺層特徵（線條）」和「深層特徵（物體輪廓）」融合在一起。因為小物件需要看細節，大物件需要看輪廓，Neck 把這些資訊混合，讓模型能同時看清楚大大小小的東西。</p>
+<p data-path-to-node="8" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="9,1,0">YOLOv8 的技術：</b> 使用了 <b data-index-in-node="16" data-path-to-node="9,1,0">PAN-FPN</b> (Path Aggregation Network)。</p>
+<p data-path-to-node="8" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="9,2,0">白話文：</b> 它確保模型不會因為看大東西就忽略小東西，把不同尺寸的特徵圖疊加起來。</p>
+<p style="padding-left: 30px;"><b data-index-in-node="0" data-path-to-node="10">3. 頭部 (Head) —— 負責「做決定」</b></p>
+<p data-path-to-node="11" style="padding-left: 60px;">這是模型的最後部分，就像<b data-index-in-node="12" data-path-to-node="11">大腦的決策區</b>。</p>
+<p data-path-to-node="11" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="12,0,0">功能：</b> 根據 Neck 給的資訊，最終畫出框框 (Bounding Box) 並判斷它是什麼類別 (Class)。</p>
+<p data-path-to-node="11" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="12,1,0">YOLOv8 的技術：</b> 使用了 <b data-index-in-node="16" data-path-to-node="12,1,0">Decoupled Head</b> (解耦頭)。意思是它把「畫框框」和「分類別」這兩件事分開來做，比較不會互相干擾。</p>
+<p data-path-to-node="11" style="padding-left: 120px;"><b data-index-in-node="0" data-path-to-node="12,2,0">白話文：</b> 它最後輸出三樣東西：</p>
+<p data-path-to-node="11" style="padding-left: 120px;"><b data-index-in-node="0" data-path-to-node="12,2,1,0,0">位置</b> (xywh)：框框在哪裡？</p>
+<p data-path-to-node="11" style="padding-left: 120px;"><b data-index-in-node="0" data-path-to-node="12,2,1,1,0">類別</b> (Class)：是 Paper 還是 Can？</p>
+<p data-path-to-node="11" style="padding-left: 120px;"><b data-index-in-node="0" data-path-to-node="12,2,1,2,0">信心度</b> (Confidence)：我有幾成把握？</p>
 <hr/>
 <h4 data-path-to-node="12"><b data-index-in-node="0" data-path-to-node="12"></b></h4>
 <p>3.使用工具及技術</p>
@@ -193,10 +215,10 @@
 <p>第二階段</p>
 <ul>
 <li>
-<p data-path-to-node="13,0,0"><b data-index-in-node="0" data-path-to-node="13,0,0">訓練環境：</b><span> </span>PVE虛擬機 (使用 GTX1070 GPU 加速)。</p>
+<p data-path-to-node="13,0,0"><b data-index-in-node="0" data-path-to-node="13,0,0">訓練環境：</b><span> </span>PVE虛擬機 (使用 GTX1070 GPU )、python 1.31.1、cuda124。</p>
 </li>
 <li>
-<p data-path-to-node="13,1,0"><b data-index-in-node="0" data-path-to-node="13,1,0">訓練參數：</b><span> </span>Epochs=50, Imgsz=512。</p>
+<p data-path-to-node="13,1,0"><b data-index-in-node="0" data-path-to-node="13,1,0">訓練參數：</b><span> </span>Epochs=50, Imgsz=640。</p>
 </li>
 <li>
 <p data-path-to-node="13,2,0"><b data-index-in-node="0" data-path-to-node="13,2,0">推論環境：</b><span> </span>本地 Windows 電腦、Miniconda 虛擬環境、OpenCV 影像串接。</p>
@@ -218,7 +240,17 @@
 </li>
 </ul>
 <p>第二階段</p>
-<p></p>
+<ul>
+<li>
+<p data-path-to-node="11,0,0"><b data-index-in-node="0" data-path-to-node="11,0,0">資料來源：</b><span> roboflow Universe中搜尋到的<a href="https://universe.roboflow.com/fyp-li8zz/plastic-bottle-2.0"> </a></span><a href="https://universe.roboflow.com/fyp-li8zz/plastic-bottle-2.0">Plastic Bottle 2.0 Computer Vision Model</a></p>
+</li>
+<li>
+<p data-path-to-node="11,1,0"><b data-index-in-node="0" data-path-to-node="11,1,0">資料標註與合併：</b><span> 這次我決定先訓練寶特瓶的資料集</span></p>
+</li>
+<li>
+<p data-path-to-node="11,2,0"><b data-index-in-node="0" data-path-to-node="11,2,0">資料增強 (Augmentation)：</b><span> </span>加入旋轉 (Rotation)、模糊 (Blur) </p>
+</li>
+</ul>
 <hr/>
 <p>5.製作過程紀錄</p>
 <p></p>
@@ -286,7 +318,7 @@ pip install numpy pandas opencv-python matplotlib</pre>
 <p style="padding-left: 30px;">安裝的過程中我遇到了無法偵測核心的問題，要安裝ipykernel。</p>
 <pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">conda install ipykernel</pre>
 <p style="padding-left: 30px;">下載數據集</p>
-<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">import os
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import os
 from roboflow import Roboflow
 
 # 初始化 Roboflow
@@ -302,7 +334,7 @@ dataset = version.download("yolov8", location=dataset_dir)
 
 print(f"✅ 數據下載完成！路徑：{dataset_dir}")</pre>
 <p style="padding-left: 30px;">AI建議我對圖片進行檢查</p>
-<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">import cv2
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import cv2
 import matplotlib.pyplot as plt
 import glob
 
@@ -316,10 +348,53 @@ for img_path in test_images:
     plt.imshow(img)
     plt.axis('off')
     plt.show()</pre>
-<p style="padding-left: 30px;"><img caption="false" height="507" src="/images/AI程式.png" width="554"/></p><h1>RTET 看這邊</h1>
-<p>這裡主要放一些團隊的資源及設備</p><h2>團隊信箱、雲端</h2>
+<p style="padding-left: 30px;"><img caption="false" height="507" src="/images/AI程式.png" width="554"/></p>
+<p style="padding-left: 30px;">檢查模型路徑 驗證環境與資料結構</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import os
+import yaml
+
+# 檢查 data.yaml
+yaml_path = "F:/code/bottle_dataset/data.yaml"
+
+with open(yaml_path, 'r') as f:
+    data_config = yaml.safe_load(f)
+
+print(f"✅ 類別名稱: {data_config['names']}")
+print(f"✅ 訓練集路徑: {data_config['train']}")</pre>
+<p style="padding-left: 30px;"></p>
+<p>3.接下來進入訓練環節</p>
+<p style="padding-left: 30px;"></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from ultralytics import YOLO
+
+
+# 確保這行路徑是完全正確的
+final_yaml = "F:/code/bottle_dataset/data.yaml"
+
+# 再次確認檔案真的在那裡
+import os
+if os.path.exists(final_yaml):
+    print("✅ 檔案確認存在")
+
+# 建議先用 cpu 測試一下路徑是否通暢，沒問題再換 device=0 (GPU)
+model = YOLO('yolov8n.pt')
+
+results = model.train(
+    data=final_yaml,  # 確保這是一個字串，例如 "F:/code/bottle_dataset/data.yaml"
+    epochs=50,
+    imgsz=640,
+    batch=24,
+    device=0,        # 如果報 CUDA 錯誤，請先改為 'cpu'
+    name='bottle_exp_1'
+)</pre>
+<p style="padding-left: 30px;"><img alt="" height="323" src="/images/運算中.png" width="554"/></p>
+<p>4.訓練成果及推理結果</p>
+<p></p>
+<p style="padding-left: 30px;"></p><h1>RTET 看這邊</h1>
+<p>這裡主要放一些團隊的資源及設備</p>
+<h2>團隊信箱、雲端</h2>
 <p>目前還在配置中</p>
-<p>將會使用google workspace進行分發</p><h2>vm虛擬機器借用</h2>
+<p>將會使用google workspace進行分發</p>
+<h2>vm虛擬機器借用</h2>
 <h3>借用方式~</h3>
 <p><strong><em>介紹：</em></strong></p>
 <p>虛擬機器由mde協同設計室成員"融融"進行管理，目前已配置win10虛擬環境以及solidwork 2025供給需要使用的RTET團員使用。</p>
@@ -343,7 +418,8 @@ for img_path in test_images:
 <p><em><span style="background-color: #ff6600;"><strong>借用注意事項：</strong></span></em></p>
 <p>1.請愛惜使用虛擬主機~</p>
 <p>2.如果登入個人帳號請記得刪除登入資訊。</p>
-<p>3.盡量使用D:存放資料或安裝軟體 <span style="background-color: #ff6600;">D:速度較快</span>減少等待時間，若空間不足請尋找融融加大~</p><h3>虛擬機器借用狀況</h3>
+<p>3.盡量使用D:存放資料或安裝軟體 <span style="background-color: #ff6600;">D:速度較快</span>減少等待時間，若空間不足請尋找融融加大~</p>
+<h3>虛擬機器借用狀況</h3>
 <p>
 <script src="https://unpkg.com/three@0.144.0/build/three.js" type="text/javascript"></script>
 </p>

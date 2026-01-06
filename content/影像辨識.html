@@ -144,7 +144,7 @@ img.add_border {
     <div id="tipue_search_content">藝術史 << <a href='藝術史.html'>Previous</a> <a href='RTET 看這邊.html'>Next</a> >> RTET 看這邊<br /><h1>影像辨識</h1>
 <p>1.</p>
 <p><strong>動機</strong>：虎尾鎮曾經因為多次垃圾分類沒有分類好，導致垃圾被停運好幾次，其實有時候我自己也很懶得分類，我希望可以製作一個可以自動分類垃圾的垃圾桶。</p>
-<p><strong>預期目標</strong>：這次我會先以生活中常見的物品進行辨識，我希望他可以分辨常見的寶特瓶、鐵鋁罐、紙類，在和實體機構進行配合。</p>
+<p><strong>預期目標</strong>：這次我會先以生活中常見的垃圾進行辨識，我希望他可以分辨常見的寶特瓶、鐵鋁罐、紙類，在和實體機構進行配合。</p>
 <p><strong>環境保護趨勢</strong><b data-index-in-node="0" data-path-to-node="5,0,0">：</b> 全球資源回收需求日益增加，但人工分類成本高且容易出錯。</p>
 <p><strong>技術結合</strong>： 結合深度學習（YOLO）與電腦視覺（OpenCV），實現自動化資源回收系統。</p>
 <p><strong>應用場景</strong>： 智慧垃圾桶原型。透過鏡頭自動辨識垃圾種類，導引至正確的回收桶。</p>
@@ -159,7 +159,24 @@ img.add_border {
 <p data-path-to-node="9,1,0"><b data-index-in-node="0" data-path-to-node="9,1,0">選擇原因：</b> 模型輕量化、推論速度快（約 1.8ms），非常適合部署在資源有限的硬體設備（如智慧垃圾桶的嵌入式系統）。</p>
 </li>
 </ul>
-<h4 data-path-to-node="10"><b data-index-in-node="0" data-path-to-node="10"></b></h4>
+<p style="padding-left: 30px;"><b data-index-in-node="0" data-path-to-node="4">1. 骨幹網路 (Backbone) —— 負責「看特徵」</b></p>
+<p data-path-to-node="5" style="padding-left: 60px;">這是模型的第一部分，就像人的<b data-index-in-node="14" data-path-to-node="5">眼睛和視神經</b>。</p>
+<p data-path-to-node="5" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="6,0,0">功能：</b> 它的工作是從原本的圖片中提取特徵。它會把圖片不斷縮小，提取出線條、形狀、紋理，直到變成高維度的特徵圖。</p>
+<p data-path-to-node="5" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="6,1,0">YOLOv8 的技術：</b> 使用了 <b data-index-in-node="16" data-path-to-node="6,1,0">CSPDarknet</b> 結構。</p>
+<p data-path-to-node="5" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="6,2,0">白話文：</b> 它負責看出一張圖裡哪裡是圓的、哪裡是紅色的、哪裡有邊緣。</p>
+<p style="padding-left: 30px;"><b data-index-in-node="0" data-path-to-node="7">2. 頸部 (Neck) —— 負責「整合資訊」</b></p>
+<p data-path-to-node="8" style="padding-left: 60px;">這是模型的中間部分，就像<b data-index-in-node="12" data-path-to-node="8">神經傳導系統</b>。</p>
+<p data-path-to-node="8" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="9,0,0">功能：</b> 它負責把 Backbone 提取到的「淺層特徵（線條）」和「深層特徵（物體輪廓）」融合在一起。因為小物件需要看細節，大物件需要看輪廓，Neck 把這些資訊混合，讓模型能同時看清楚大大小小的東西。</p>
+<p data-path-to-node="8" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="9,1,0">YOLOv8 的技術：</b> 使用了 <b data-index-in-node="16" data-path-to-node="9,1,0">PAN-FPN</b> (Path Aggregation Network)。</p>
+<p data-path-to-node="8" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="9,2,0">白話文：</b> 它確保模型不會因為看大東西就忽略小東西，把不同尺寸的特徵圖疊加起來。</p>
+<p style="padding-left: 30px;"><b data-index-in-node="0" data-path-to-node="10">3. 頭部 (Head) —— 負責「做決定」</b></p>
+<p data-path-to-node="11" style="padding-left: 60px;">這是模型的最後部分，就像<b data-index-in-node="12" data-path-to-node="11">大腦的決策區</b>。</p>
+<p data-path-to-node="11" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="12,0,0">功能：</b> 根據 Neck 給的資訊，最終畫出框框 (Bounding Box) 並判斷它是什麼類別 (Class)。</p>
+<p data-path-to-node="11" style="padding-left: 90px;"><b data-index-in-node="0" data-path-to-node="12,1,0">YOLOv8 的技術：</b> 使用了 <b data-index-in-node="16" data-path-to-node="12,1,0">Decoupled Head</b> (解耦頭)。意思是它把「畫框框」和「分類別」這兩件事分開來做，比較不會互相干擾。</p>
+<p data-path-to-node="11" style="padding-left: 120px;"><b data-index-in-node="0" data-path-to-node="12,2,0">白話文：</b> 它最後輸出三樣東西：</p>
+<p data-path-to-node="11" style="padding-left: 120px;"><b data-index-in-node="0" data-path-to-node="12,2,1,0,0">位置</b> (xywh)：框框在哪裡？</p>
+<p data-path-to-node="11" style="padding-left: 120px;"><b data-index-in-node="0" data-path-to-node="12,2,1,1,0">類別</b> (Class)：是 Paper 還是 Can？</p>
+<p data-path-to-node="11" style="padding-left: 120px;"><b data-index-in-node="0" data-path-to-node="12,2,1,2,0">信心度</b> (Confidence)：我有幾成把握？</p>
 <hr/>
 <h4 data-path-to-node="12"><b data-index-in-node="0" data-path-to-node="12"></b></h4>
 <p>3.使用工具及技術</p>
@@ -178,10 +195,10 @@ img.add_border {
 <p>第二階段</p>
 <ul>
 <li>
-<p data-path-to-node="13,0,0"><b data-index-in-node="0" data-path-to-node="13,0,0">訓練環境：</b><span> </span>PVE虛擬機 (使用 GTX1070 GPU 加速)。</p>
+<p data-path-to-node="13,0,0"><b data-index-in-node="0" data-path-to-node="13,0,0">訓練環境：</b><span> </span>PVE虛擬機 (使用 GTX1070 GPU )、python 1.31.1、cuda124。</p>
 </li>
 <li>
-<p data-path-to-node="13,1,0"><b data-index-in-node="0" data-path-to-node="13,1,0">訓練參數：</b><span> </span>Epochs=50, Imgsz=512。</p>
+<p data-path-to-node="13,1,0"><b data-index-in-node="0" data-path-to-node="13,1,0">訓練參數：</b><span> </span>Epochs=50, Imgsz=640。</p>
 </li>
 <li>
 <p data-path-to-node="13,2,0"><b data-index-in-node="0" data-path-to-node="13,2,0">推論環境：</b><span> </span>本地 Windows 電腦、Miniconda 虛擬環境、OpenCV 影像串接。</p>
@@ -203,7 +220,17 @@ img.add_border {
 </li>
 </ul>
 <p>第二階段</p>
-<p></p>
+<ul>
+<li>
+<p data-path-to-node="11,0,0"><b data-index-in-node="0" data-path-to-node="11,0,0">資料來源：</b><span> roboflow Universe中搜尋到的<a href="https://universe.roboflow.com/fyp-li8zz/plastic-bottle-2.0"> </a></span><a href="https://universe.roboflow.com/fyp-li8zz/plastic-bottle-2.0">Plastic Bottle 2.0 Computer Vision Model</a></p>
+</li>
+<li>
+<p data-path-to-node="11,1,0"><b data-index-in-node="0" data-path-to-node="11,1,0">資料標註與合併：</b><span> 這次我決定先訓練寶特瓶的資料集</span></p>
+</li>
+<li>
+<p data-path-to-node="11,2,0"><b data-index-in-node="0" data-path-to-node="11,2,0">資料增強 (Augmentation)：</b><span> </span>加入旋轉 (Rotation)、模糊 (Blur) </p>
+</li>
+</ul>
 <hr/>
 <p>5.製作過程紀錄</p>
 <p></p>
@@ -315,10 +342,36 @@ with open(yaml_path, 'r') as f:
 print(f"✅ 類別名稱: {data_config['names']}")
 print(f"✅ 訓練集路徑: {data_config['train']}")</pre>
 <p style="padding-left: 30px;"></p>
+<p>3.接下來進入訓練環節</p>
 <p style="padding-left: 30px;"></p>
-<p style="padding-left: 30px;"></p>
-<p style="padding-left: 30px;"></p>
-<p style="padding-left: 30px;"></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from ultralytics import YOLO
+
+
+# 確保這行路徑是完全正確的
+final_yaml = "F:/code/bottle_dataset/data.yaml"
+
+# 再次確認檔案真的在那裡
+import os
+if os.path.exists(final_yaml):
+    print("✅ 檔案確認存在")
+
+# 建議先用 cpu 測試一下路徑是否通暢，沒問題再換 device=0 (GPU)
+model = YOLO('yolov8n.pt')
+
+results = model.train(
+    data=final_yaml,  # 確保這是一個字串，例如 "F:/code/bottle_dataset/data.yaml"
+    epochs=50,
+    imgsz=640,
+    batch=24,
+    device=0,        # 如果報 CUDA 錯誤，請先改為 'cpu'
+    name='bottle_exp_1'
+)</pre>
+<p style="padding-left: 30px;"><img alt="" height="323" src="./../images/運算中.png" width="554"/></p>
+<p>4.訓練成果及推理結果</p>
+<p style="padding-left: 30px;">以下是我訓練完後的成果圖表，可以發現mAP50的部分接近0.92了，而mAP50-95ru, 已經到0.78左右了，看起來是非常得不錯。</p>
+<p style="padding-left: 30px;"><img alt="" height="400" src="./../images/results.png" width="800"/></p>
+<p></p>
+<p style="padding-left: 30px;">下面是成果影片</p>
 <p style="padding-left: 30px;"></p><br />藝術史 << <a href='藝術史.html'>Previous</a> <a href='RTET 看這邊.html'>Next</a> >> RTET 看這邊</div>
         
     <!-- footer -->
