@@ -164,11 +164,10 @@
 <h2>影像辨識</h2>
 <p></p>
 <p><strong>簡報</strong></p>
-<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;"><iframe allow="fullscreen" allowfullscreen="allowfullscreen" height="150" loading="lazy" src="https://www.canva.com/design/DAG9qnnNrG4/qqfOctIVRRyYSDXgcDKKaA/view?embed" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;" width="300">
-</iframe></div>
+<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;"><iframe allow="fullscreen" allowfullscreen="allowfullscreen" height="150" loading="lazy" src="https://www.canva.com/design/DAG9qnnNrG4/qqfOctIVRRyYSDXgcDKKaA/view?embed" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;" width="300"></iframe></div>
 <p>周昀融 設計的 <a href="https://www.canva.com/design/DAG9qnnNrG4/qqfOctIVRRyYSDXgcDKKaA/view?utm_content=DAG9qnnNrG4&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" rel="noopener" target="_blank">影像辨識期末告</a></p>
 <p><strong>影片</strong></p>
-<p></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/g2AjB29XVAs?si=235lNxmab9sQnRbD" title="YouTube video player" width="560"></iframe></p>
 <p></p>
 <p>1.</p>
 <p><strong>動機</strong>：虎尾鎮曾經因為多次垃圾分類沒有分類好，導致垃圾被停運好幾次，其實有時候我自己也很懶得分類，我希望可以製作一個可以自動分類垃圾的垃圾桶。</p>
@@ -405,7 +404,103 @@ results = model.train(
 <p></p>
 <p><a href="/downloads/detect_image.ipynb">/downloads/detect_image.ipynb</a></p>
 <p><a href="/downloads/train_bottle.ipynb">/downloads/train_bottle.ipynb</a></p><h1>RTET 看這邊</h1>
-<p>這裡主要放一些團隊的資源及設備</p><h2>團隊信箱、雲端</h2>
+<p>這裡主要放一些團隊的資源及設備</p>
+<div id="password-screen" style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; text-align: center; font-family: sans-serif; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+<h2>🔒 內容受保護</h2>
+<p style="color: #666;">請輸入密碼以查看 Canva 相關內容</p>
+<input id="pass-input" style="width: 80%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;" type="password"/> <br/> <button onclick="unlock()" style="padding: 10px 25px; background-color: #00d5ff; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">確認送出</button>
+<p id="err-msg" style="color: red; display: none; margin-top: 10px;">密碼錯誤，請再試一次</p>
+</div>
+<div id="protected-content" style="display: none;">
+<p>Canva</p>
+<p><a href="https://www.canva.com/brand/join?token=3JuzFsGT3SLBBJVLjvIZYw&amp;brandingVariant=edu&amp;referrer=team-invite" target="_blank">加入我的教室</a>才能看到窩 (戳連結)</p>
+<p><a href="https://www.canva.com/brand/join?token=3JuzFsGT3SLBBJVLjvIZYw&amp;brandingVariant=edu&amp;referrer=team-invite" target="_blank">第一次審查報告</a></p>
+<p><a href="https://www.canva.com/design/DAG-dsrlQ3s/nSsYzcZZVQwg2u5Tk2ZXQg/edit?utm_content=DAG-dsrlQ3s&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=sharebutton" target="_blank">第一次審查報告-預編版</a></p>
+<script>
+function unlock() {
+    const input = document.getElementById('pass-input').value;
+    const errMsg = document.getElementById('err-msg');
+    
+    // 將 "1234" 進行 Base64 編碼後是 "MTIzNA=="
+    // 這樣別人在原始碼中不會直接看到密碼明文
+    if (btoa(input) === "MTIzNA==") { 
+        document.getElementById('password-screen').style.display = 'none';
+        document.getElementById('protected-content').style.display = 'block';
+    } else {
+        errMsg.style.display = 'block';
+        document.getElementById('pass-input').value = "";
+    }
+}
+
+// 支援按 Enter 鍵送出
+document.getElementById('pass-input').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') unlock();
+});
+</script>
+<div class="lg-badge-container size-medium"><span class="lg-badge-counter" title="Found links">0</span>
+<div class="controls-block">
+<div class="lg-menu-item-container parent-menu-item">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Tabs" id="open" title="Open (Tabs)">Open</span><span class="lg-submenu-arrow">▸</span></div>
+<div class="lg-submenu">
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Tabs" id="tabs" title="Open links in new tabs">Tabs</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="NewWindow" id="window" title="Open links in new window">Window</span></div>
+</div>
+</div>
+</div>
+<div class="lg-menu-item-container parent-menu-item">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="copy" title="Copy as (Excel style)">Copy</span><span class="lg-submenu-arrow">▸</span></div>
+<div class="lg-submenu">
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="urls + titles" title="URLs + Titles">URLs + Titles</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="urls" title="URLs">URLs</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="urls space separated" title="URLs space separated">URLs space separated</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="titles" title="Titles">Titles</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="html links" title="HTML links">HTML links</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="html list of links" title="HTML list of links">HTML list of links</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="markdown" title="Markdown">Markdown</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="excel style" title="Excel style">Excel style</span></div>
+</div>
+</div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Bookmarks" id="bookmarks" title="Add links to bookmarks">Bookmarks</span></div>
+</div>
+<div class="lg-menu-item-container parent-menu-item">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Export" id="export" title="Export to (CSV)">Export</span><span class="lg-submenu-arrow">▸</span></div>
+<div class="lg-submenu">
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Export" id="csv" title="Export links to CSV">CSV</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Export" id="text" title="Export links to text">Text</span></div>
+</div>
+</div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Review" id="review" title="Review all links">Review</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="FindAll" id="btnFindAll" title="Find all links on the page">Find All</span></div>
+</div>
+</div>
+</div><h2>團隊信箱、雲端</h2>
 <p>目前還在配置中</p>
 <p>將會使用google workspace進行分發</p>
 <h2>vm虛擬機器借用</h2>
@@ -477,4 +572,4 @@ results = model.train(
     // 每 15 秒自動刷新一次
     setInterval(updateVMStatus, 2000);
     updateVMStatus(); // 網頁載入時立即執行一次
-</script>
+</script></div>
