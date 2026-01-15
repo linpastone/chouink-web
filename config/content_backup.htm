@@ -406,37 +406,14 @@ results = model.train(
 <p><a href="/downloads/train_bottle.ipynb">/downloads/train_bottle.ipynb</a></p><h1>RTET 看這邊</h1>
 <p>這裡主要放一些團隊的資源及設備</p>
 <div id="password-screen" style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; text-align: center; font-family: sans-serif; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-<h2>🔒 內容受保護</h2>
-<p style="color: #666;">請輸入密碼以查看 Canva 相關內容</p>
-<input id="pass-input" style="width: 80%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;" type="password"/> <br/> <button onclick="unlock()" style="padding: 10px 25px; background-color: #00d5ff; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">確認送出</button>
-<p id="err-msg" style="color: red; display: none; margin-top: 10px;">密碼錯誤，請再試一次</p>
-</div>
-<div id="protected-content" style="display: none;">
-<p>Canva</p>
-<p><a href="https://www.canva.com/brand/join?token=3JuzFsGT3SLBBJVLjvIZYw&amp;brandingVariant=edu&amp;referrer=team-invite" target="_blank">加入我的教室</a>才能看到窩 (戳連結)</p>
-<p><a href="https://www.canva.com/brand/join?token=3JuzFsGT3SLBBJVLjvIZYw&amp;brandingVariant=edu&amp;referrer=team-invite" target="_blank">第一次審查報告</a></p>
-<p><a href="https://www.canva.com/design/DAG-dsrlQ3s/nSsYzcZZVQwg2u5Tk2ZXQg/edit?utm_content=DAG-dsrlQ3s&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=sharebutton" target="_blank">第一次審查報告-預編版</a></p>
-<script>
-function unlock() {
-    const input = document.getElementById('pass-input').value;
-    const errMsg = document.getElementById('err-msg');
-    
-    // 將 "1234" 進行 Base64 編碼後是 "MTIzNA=="
-    // 這樣別人在原始碼中不會直接看到密碼明文
-    if (btoa(input) === "MTIzNA==") { 
-        document.getElementById('password-screen').style.display = 'none';
-        document.getElementById('protected-content').style.display = 'block';
-    } else {
-        errMsg.style.display = 'block';
-        document.getElementById('pass-input').value = "";
-    }
-}
-
-// 支援按 Enter 鍵送出
-document.getElementById('pass-input').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') unlock();
-});
-</script>
+<h3>canva</h3>
+<p><a href="https://www.canva.com/brand/join?token=3JuzFsGT3SLBBJVLjvIZYw&amp;brandingVariant=edu&amp;referrer=team-invite https://www.canva.com/brand/join?token=3JuzFsGT3SLBBJVLjvIZYw&amp;brandingVariant=edu&amp;referrer=team-invite">加入我的教室</a>才能看到窩(戳連結)</p>
+<p><a href="https://www.canva.com/design/DAG-ds4Qvfw/2bkKEIGnhKyHH7xvD9tshw/edit?utm_content=DAG-ds4Qvfw&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=sharebutton">第一次審查報告</a></p>
+<p><a href="https://www.canva.com/design/DAG-dsrlQ3s/nSsYzcZZVQwg2u5Tk2ZXQg/edit?utm_content=DAG-dsrlQ3s&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=sharebutton">第一次審查報告-預編版</a></p>
+<div style="max-width: 400px; margin: 20px 0; font-family: sans-serif;"><form action="https://formspree.io/f/mpqqwlpg" method="POST">
+<div style="margin-bottom: 15px;"><label style="display: block; margin-bottom: 5px;">您的電子郵件：</label> <input name="email" required="" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" type="email"/></div>
+<div style="margin-bottom: 15px;"><label style="display: block; margin-bottom: 5px;">訊息內容：</label> <textarea name="message" required="" rows="5" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></textarea></div>
+<input name="_gotcha" style="display: none;" type="text"/> <button style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;" type="submit"> 送出郵件 </button></form></div>
 <div class="lg-badge-container size-medium"><span class="lg-badge-counter" title="Found links">0</span>
 <div class="controls-block">
 <div class="lg-menu-item-container parent-menu-item">
