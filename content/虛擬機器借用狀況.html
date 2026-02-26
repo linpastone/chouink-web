@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='關於我們.html'>關於我們</a><li class='has-children'><a href='hello world.html'>hello world</a><ul class='dropdown'><li class='has-children'><a href='PVE.html'>PVE</a><ul class='dropdown'><li><a href='PVE備份與還原.html'>PVE備份與還原</a></li></ul><li class='has-children'><a href='webodm.html'>webodm</a><ul class='dropdown'><li><a href='安裝.html'>安裝</a><li><a href='開啟指令.html'>開啟指令</a></li></li></ul></ul><li class='has-children'><a href='大二上期末資料.html'>大二上期末資料</a><ul class='dropdown'><li><a href='藝術史.html'>藝術史</a><li class='has-children'><a href='影像辨識.html'>影像辨識</a><ul class='dropdown'><li><a href='程式碼檔案.html'>程式碼檔案</a></li></li></ul></ul><li class='has-children'><a href='RTET 看這邊.html'>RTET 看這邊</a><ul class='dropdown'><li><a href='canva.html'>canva</a><li><a href='團隊信箱、雲端.html'>團隊信箱、雲端</a><li class='has-children'><a href='vm虛擬機器借用.html'>vm虛擬機器借用</a><ul class='dropdown'><li><a href='借用方式~.html'>借用方式~</a><li><a href='虛擬機器借用狀況.html'>虛擬機器借用狀況</a></li>
+                     <li><a href='關於我們.html'>關於我們</a><li class='has-children'><a href='hello world.html'>hello world</a><ul class='dropdown'><li class='has-children'><a href='PVE.html'>PVE</a><ul class='dropdown'><li><a href='PVE備份與還原.html'>PVE備份與還原</a></li></ul><li class='has-children'><a href='webodm.html'>webodm</a><ul class='dropdown'><li><a href='安裝.html'>安裝</a><li><a href='開啟指令.html'>開啟指令</a></li></li></ul></ul><li class='has-children'><a href='個人作業報告.html'>個人作業報告</a><ul class='dropdown'><li class='has-children'><a href='大二上期末資料.html'>大二上期末資料</a><ul class='dropdown'><li><a href='藝術史.html'>藝術史</a><li><a href='影像辨識.html'>影像辨識</a></li></li></ul></ul><li class='has-children'><a href='RTET 看這邊.html'>RTET 看這邊</a><ul class='dropdown'><li><a href='canva.html'>canva</a><li><a href='團隊信箱、雲端.html'>團隊信箱、雲端</a><li class='has-children'><a href='vm虛擬機器借用.html'>vm虛擬機器借用</a><ul class='dropdown'><li><a href='借用方式~.html'>借用方式~</a><li><a href='虛擬機器借用狀況.html'>虛擬機器借用狀況</a></li>
                       </ul>
                 </nav>
               </div>
@@ -185,7 +185,152 @@ img.add_border {
     // 每 15 秒自動刷新一次
     setInterval(updateVMStatus, 2000);
     updateVMStatus(); // 網頁載入時立即執行一次
-</script></div><br />借用方式~ << <a href='借用方式~.html'>Previous</a> </div>
+</script>
+</div>
+<div class="lg-badge-container size-medium" style="top: 0px; left: 0px;"><span class="lg-badge-counter" title="Found links">0</span>
+<div class="controls-block">
+<div class="lg-menu-item-container parent-menu-item">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Tabs" id="open" title="Open links (Tabs)">Open</span><span class="lg-submenu-arrow">▸</span></div>
+<div class="lg-submenu">
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Tabs" id="tabs" title="Open links in new tabs">Tabs</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="NewWindow" id="window" title="Open links in new window">Window</span></div>
+</div>
+</div>
+</div>
+<div class="lg-menu-item-container parent-menu-item">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="copy" title="Copy links to clipboard (Excel style)">Copy</span><span class="lg-submenu-arrow">▸</span></div>
+<div class="lg-submenu">
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="urls + titles" title="URLs + Titles">URLs + Titles</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="urls" title="URLs">URLs</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="urls space separated" title="URLs space separated">URLs space separated</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="titles" title="Titles">Titles</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="html links" title="HTML links">HTML links</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="html list of links" title="HTML list of links">HTML list of links</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="markdown" title="Markdown">Markdown</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="excel style" title="Excel style">Excel style</span></div>
+</div>
+</div>
+</div>
+<div class="lg-menu-item-container parent-menu-item">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Bookmarks" id="bookmarks" title="Add links to bookmarks">Bookmarks</span><span class="lg-submenu-arrow">▸</span></div>
+<div class="lg-submenu">
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Bookmarks" id="bookmarks" title="Add links to bookmarks">Bookmarks</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn disabled" data-action="ReadingList" id="read for later" title="Reading List permission required. Click to grant permission.">Read For Later</span></div>
+</div>
+</div>
+</div>
+<div class="lg-menu-item-container parent-menu-item">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Export" id="export" title="Export to (CSV)">Export</span><span class="lg-submenu-arrow">▸</span></div>
+<div class="lg-submenu">
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Export" id="csv" title="Export links to CSV">CSV</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Export" id="text" title="Export links to text">Text</span></div>
+</div>
+</div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Review" id="review" title="Review all links">Review</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="FindAll" id="btnFindAll" title="Find all links on the page">Find All</span></div>
+</div>
+</div>
+</div>
+<div class="lg-badge-container size-medium" style="top: 0px; left: 0px;"><span class="lg-badge-counter" title="Found links">0</span>
+<div class="controls-block">
+<div class="lg-menu-item-container parent-menu-item">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Tabs" id="open" title="Open links (Tabs)">Open</span><span class="lg-submenu-arrow">▸</span></div>
+<div class="lg-submenu">
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Tabs" id="tabs" title="Open links in new tabs">Tabs</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="NewWindow" id="window" title="Open links in new window">Window</span></div>
+</div>
+</div>
+</div>
+<div class="lg-menu-item-container parent-menu-item">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="copy" title="Copy links to clipboard (Excel style)">Copy</span><span class="lg-submenu-arrow">▸</span></div>
+<div class="lg-submenu">
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="urls + titles" title="URLs + Titles">URLs + Titles</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="urls" title="URLs">URLs</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="urls space separated" title="URLs space separated">URLs space separated</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="titles" title="Titles">Titles</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="html links" title="HTML links">HTML links</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="html list of links" title="HTML list of links">HTML list of links</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="markdown" title="Markdown">Markdown</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Clipboard" id="excel style" title="Excel style">Excel style</span></div>
+</div>
+</div>
+</div>
+<div class="lg-menu-item-container parent-menu-item">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Bookmarks" id="bookmarks" title="Add links to bookmarks">Bookmarks</span><span class="lg-submenu-arrow">▸</span></div>
+<div class="lg-submenu">
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Bookmarks" id="bookmarks" title="Add links to bookmarks">Bookmarks</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn disabled" data-action="ReadingList" id="read for later" title="Reading List permission required. Click to grant permission.">Read For Later</span></div>
+</div>
+</div>
+</div>
+<div class="lg-menu-item-container parent-menu-item">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Export" id="export" title="Export to (CSV)">Export</span><span class="lg-submenu-arrow">▸</span></div>
+<div class="lg-submenu">
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Export" id="csv" title="Export links to CSV">CSV</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Export" id="text" title="Export links to text">Text</span></div>
+</div>
+</div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="Review" id="review" title="Review all links">Review</span></div>
+</div>
+<div class="lg-menu-item-container">
+<div class="lg-btn-container"><span class="control lg-btn" data-action="FindAll" id="btnFindAll" title="Find all links on the page">Find All</span></div>
+</div>
+</div>
+</div><br />借用方式~ << <a href='借用方式~.html'>Previous</a> </div>
         
     <!-- footer -->
       <div class="container">
