@@ -157,6 +157,346 @@ img.add_border {
 <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;"><iframe allow="fullscreen" allowfullscreen="allowfullscreen" height="150" loading="lazy" src="https://www.canva.com/design/DAHL9Ai_mEU/3SN73cXvd-emCDKypybDeA/view?embed" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;" width="300"></iframe></div>
 <p>周昀融 設計的 <a href="https://www.canva.com/design/DAHL9Ai_mEU/3SN73cXvd-emCDKypybDeA/view?utm_content=DAHL9Ai_mEU&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" rel="noopener" target="_blank">資料庫管理系統 3</a></p>
 <p></p>
+<h4>期末考</h4>
+<p>運行mariaDB</p>
+<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">"C:\Program Files\MariaDB 12.3\bin\mysql.exe" -u root -p</pre>
+<p>建立+匯入</p>
+<pre class="brush:sql;auto-links:false;toolbar:false" contenteditable="false">-- 1. 建立資料庫
+CREATE DATABASE nfu_41323217;
+
+-- 2. 切換至該資料庫並匯入 finalexam.sql (此步驟通常在終端機或 GUI 介面執行)
+USE nfu_41323217;
+
+-- 3. 建立使用者並授權該資料庫的全部權限 (密碼請自行替換，範例設為 'password123')
+CREATE USER 's3217'@'localhost' IDENTIFIED BY 'password123';
+--密碼要改
+GRANT ALL PRIVILEGES ON nfu_41323217.* TO 's3217'@'localhost';
+FLUSH PRIVILEGES;
+
+-- 4. 查詢權限（這步執行的結果需要截圖貼入 Word）
+SHOW GRANTS FOR 's3217'@'localhost';
+
+--匯入資料庫
+source C:\finalexam.sql</pre>
+<p>論文審查</p>
+<pre class="brush:sql;auto-links:false;toolbar:false" contenteditable="false">SELECT DISTINCT author_id AS id
+FROM comments
+WHERE author_id = viewer_id
+ORDER BY id ASC;</pre>
+<p>語句拆解</p>
+<ol data-path-to-node="3" start="1">
+<li>
+<p data-path-to-node="3,0,0"><b data-index-in-node="0" data-path-to-node="3,0,0"><code data-index-in-node="0" data-path-to-node="3,0,0">SELECT DISTINCT author_id AS id</code></b></p>
+<ul data-path-to-node="3,0,1">
+<li>
+<p data-path-to-node="3,0,1,0,0"><code data-index-in-node="0" data-path-to-node="3,0,1,0,0">SELECT</code>：選取資料。</p>
+</li>
+<li>
+<p data-path-to-node="3,0,1,1,0"><code data-index-in-node="0" data-path-to-node="3,0,1,1,0">DISTINCT</code>：<b data-index-in-node="9" data-path-to-node="3,0,1,1,0">關鍵詞</b>，用來「去除重複」的結果。如果某個作者自己留言了好幾次，系統只會顯示該作者的 ID 一次。</p>
+</li>
+<li>
+<p data-path-to-node="3,0,1,2,0"><code data-index-in-node="0" data-path-to-node="3,0,1,2,0">AS id</code>：將 <code data-index-in-node="8" data-path-to-node="3,0,1,2,0">author_id</code> 這個欄位名稱改顯示為 <code data-index-in-node="29" data-path-to-node="3,0,1,2,0">id</code>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p data-path-to-node="3,1,0"><b data-index-in-node="0" data-path-to-node="3,1,0"><code data-index-in-node="0" data-path-to-node="3,1,0">FROM comments</code></b></p>
+<ul data-path-to-node="3,1,1">
+<li>
+<p data-path-to-node="3,1,1,0,0">指定資料來源是名為 <code data-index-in-node="10" data-path-to-node="3,1,1,0,0">comments</code>（留言）的資料表。</p>
+</li>
+</ul>
+</li>
+<li>
+<p data-path-to-node="3,2,0"><b data-index-in-node="0" data-path-to-node="3,2,0"><code data-index-in-node="0" data-path-to-node="3,2,0">WHERE author_id = viewer_id</code></b></p>
+<ul data-path-to-node="3,2,1">
+<li>
+<p data-path-to-node="3,2,1,0,0">這是篩選條件，找出 <code data-index-in-node="10" data-path-to-node="3,2,1,0,0">author_id</code>（留言作者）與 <code data-index-in-node="27" data-path-to-node="3,2,1,0,0">viewer_id</code>（瀏覽留言的人/該文原作者）完全相同的資料行。這在社交平台中通常代表「留言者與該文作者是同一人」。</p>
+</li>
+</ul>
+</li>
+<li>
+<p data-path-to-node="3,3,0"><b data-index-in-node="0" data-path-to-node="3,3,0"><code data-index-in-node="0" data-path-to-node="3,3,0">ORDER BY id ASC</code></b></p>
+<ul data-path-to-node="3,3,1">
+<li>
+<p data-path-to-node="3,3,1,0,0"><code data-index-in-node="0" data-path-to-node="3,3,1,0,0">ORDER BY</code>：排序。</p>
+</li>
+<li>
+<p data-path-to-node="3,3,1,1,0"><code data-index-in-node="0" data-path-to-node="3,3,1,1,0">id</code>：依據剛才選出的 ID 進行排列。</p>
+</li>
+<li>
+<p data-path-to-node="3,3,1,2,0"><code data-index-in-node="0" data-path-to-node="3,3,1,2,0">ASC</code>：由小到大（遞增）排序。遞減排序 (DESC)隨機排序 (RAND)</p>
+</li>
+</ul>
+</li>
+</ol>
+<p></p>
+<p>題目 #3 – 熱門實驗室</p>
+<pre class="brush:sql;auto-links:false;toolbar:false" contenteditable="false">SELECT l.name AS popular_lab
+FROM students s
+JOIN labs l ON s.lab_id = l.lab_id
+WHERE s.id LIKE '2021%'
+GROUP BY l.lab_id, l.name
+HAVING COUNT(s.id) &gt;= 3;</pre>
+<p>1. 指令邏輯分析</p>
+<ul data-path-to-node="3">
+<li>
+<p data-path-to-node="3,0,0"><b data-index-in-node="0" data-path-to-node="3,0,0"><code data-index-in-node="0" data-path-to-node="3,0,0">SELECT l.name AS popular_lab</code></b>：選取實驗室名稱，並將欄位顯示名稱設為 <code data-index-in-node="48" data-path-to-node="3,0,0">popular_lab</code>。</p>
+</li>
+<li>
+<p data-path-to-node="3,1,0"><b data-index-in-node="0" data-path-to-node="3,1,0"><code data-index-in-node="0" data-path-to-node="3,1,0">FROM students s JOIN labs l ON s.lab_id = l.lab_id</code></b>：將 <code data-index-in-node="53" data-path-to-node="3,1,0">students</code> 表 (簡稱 <code data-index-in-node="68" data-path-to-node="3,1,0">s</code>) 與 <code data-index-in-node="73" data-path-to-node="3,1,0">labs</code> 表 (簡稱 <code data-index-in-node="84" data-path-to-node="3,1,0">l</code>) 透過共有的 <code data-index-in-node="93" data-path-to-node="3,1,0">lab_id</code> 欄位串連起來。</p>
+</li>
+<li>
+<p data-path-to-node="3,2,0"><b data-index-in-node="0" data-path-to-node="3,2,0"><code data-index-in-node="0" data-path-to-node="3,2,0">WHERE s.id LIKE '2021%'</code></b>：這是篩選條件，只抓取學號開頭為 <code data-index-in-node="40" data-path-to-node="3,2,0">2021</code> 的學生（代表 2021 年入學的學生）。</p>
+</li>
+<li>
+<p data-path-to-node="3,3,0"><b data-index-in-node="0" data-path-to-node="3,3,0"><code data-index-in-node="0" data-path-to-node="3,3,0">GROUP BY l.lab_id, l.name</code></b>：將篩選出來的資料按照「實驗室」進行分組，以便統計每個實驗室有多少名學生。</p>
+</li>
+<li>
+<p data-path-to-node="3,4,0"><b data-index-in-node="0" data-path-to-node="3,4,0"><code data-index-in-node="0" data-path-to-node="3,4,0">HAVING COUNT(s.id) &gt;= 3</code></b>：這是「分組後的篩選條件」。它會過濾掉分組後人數小於 3 人的實驗室，只留下人數達到 3 人（含）以上的「熱門實驗室」。</p>
+</li>
+</ul>
+<p>2. 執行結果解讀</p>
+<ul data-path-to-node="5">
+<li>
+<p data-path-to-node="5,0,0">查詢顯示結果為 <b data-index-in-node="8" data-path-to-node="5,0,0">"Cyber Security"</b>。</p>
+</li>
+<li>
+<p data-path-to-node="5,1,0">代表在資料庫中，屬於 2021 年入學的學生裡，只有「Cyber Security」這個實驗室的人數達到了 3 人或以上。</p>
+</li>
+</ul>
+<p>關鍵知識點：為什麼要用 <code data-index-in-node="12" data-path-to-node="7">HAVING</code> 而不是 <code data-index-in-node="23" data-path-to-node="7">WHERE</code>？</p>
+<p data-path-to-node="8">這是一個非常經典的 SQL 面試考題：</p>
+<ul data-path-to-node="9">
+<li>
+<p data-path-to-node="9,0,0"><b data-index-in-node="0" data-path-to-node="9,0,0"><code data-index-in-node="0" data-path-to-node="9,0,0">WHERE</code></b>：是在資料分組之前進行篩選（用來篩選單一紀錄，如：篩選特定入學年）。</p>
+</li>
+<li>
+<p data-path-to-node="9,1,0"><b data-index-in-node="0" data-path-to-node="9,1,0"><code data-index-in-node="0" data-path-to-node="9,1,0">HAVING</code></b>：是在資料分組之後進行篩選（用來篩選聚合後的結果，如：篩選統計人數總和）。</p>
+</li>
+</ul>
+<p>題目 #4 – 櫥窗購物</p>
+<pre class="brush:sql;auto-links:false;toolbar:false" contenteditable="false"></pre>
+<pre class="brush:sql;auto-links:false;toolbar:false" contenteditable="false">SELECT l.shopper_id, COUNT(l.entered_id) AS count_no_buy
+FROM logs l
+LEFT JOIN orders o ON l.entered_id = o.entered_id
+WHERE o.order_id IS NULL
+GROUP BY l.shopper_id;</pre>
+<p>1. 指令邏輯分析</p>
+<ul data-path-to-node="3">
+<li>
+<p data-path-to-node="3,0,0"><b data-index-in-node="0" data-path-to-node="3,0,0"><code data-index-in-node="0" data-path-to-node="3,0,0">LEFT JOIN orders o ON l.entered_id = o.entered_id</code></b>：這一步是關鍵。它將「所有訪問紀錄 (<code data-index-in-node="68" data-path-to-node="3,0,0">logs</code>)」與「訂單紀錄 (<code data-index-in-node="82" data-path-to-node="3,0,0">orders</code>)」進行連接。<code data-index-in-node="95" data-path-to-node="3,0,0">LEFT JOIN</code> 會保留 <code data-index-in-node="109" data-path-to-node="3,0,0">logs</code> 中的所有資料，即使在 <code data-index-in-node="125" data-path-to-node="3,0,0">orders</code> 表中找不到對應的 <code data-index-in-node="141" data-path-to-node="3,0,0">entered_id</code>。</p>
+</li>
+<li>
+<p data-path-to-node="3,1,0"><b data-index-in-node="0" data-path-to-node="3,1,0"><code data-index-in-node="0" data-path-to-node="3,1,0">WHERE o.order_id IS NULL</code></b>：這是一個過濾技巧。當 <code data-index-in-node="36" data-path-to-node="3,1,0">LEFT JOIN</code> 後，如果 <code data-index-in-node="51" data-path-to-node="3,1,0">o.order_id</code> 為 <code data-index-in-node="64" data-path-to-node="3,1,0">NULL</code>，表示該訪問紀錄在訂單表中找不到對應的訂單，意味著該次訪問<b data-index-in-node="97" data-path-to-node="3,1,0">沒有產生購買行為</b>。</p>
+</li>
+<li>
+<p data-path-to-node="3,2,0"><b data-index-in-node="0" data-path-to-node="3,2,0"><code data-index-in-node="0" data-path-to-node="3,2,0">GROUP BY l.shopper_id</code></b>：將篩選出來的「未消費」紀錄按照每個 <code data-index-in-node="40" data-path-to-node="3,2,0">shopper_id</code> (顧客 ID) 進行分組。</p>
+</li>
+<li>
+<p data-path-to-node="3,3,0"><b data-index-in-node="0" data-path-to-node="3,3,0"><code data-index-in-node="0" data-path-to-node="3,3,0">COUNT(l.entered_id) AS count_no_buy</code></b>：統計每個顧客在 <code data-index-in-node="44" data-path-to-node="3,3,0">logs</code> 中總共有幾次「未產生訂單的造訪紀錄」，並將結果命名為 <code data-index-in-node="76" data-path-to-node="3,3,0">count_no_buy</code>。</p>
+</li>
+</ul>
+<p>2. 執行結果解讀</p>
+<ul data-path-to-node="5">
+<li>
+<p data-path-to-node="5,0,0"><b data-index-in-node="0" data-path-to-node="5,0,0">13 號顧客</b>：有 1 次造訪但沒有購買。</p>
+</li>
+<li>
+<p data-path-to-node="5,1,0"><b data-index-in-node="0" data-path-to-node="5,1,0">39 號顧客</b>：有 2 次造訪但沒有購買。</p>
+</li>
+<li>
+<p data-path-to-node="5,2,0"><b data-index-in-node="0" data-path-to-node="5,2,0">52 號顧客</b>：有 2 次造訪但沒有購買。</p>
+</li>
+</ul>
+<p>關鍵知識點：為什麼要用 LEFT JOIN + WHERE IS NULL？</p>
+<p data-path-to-node="8">這是 SQL 中篩選「不存在關係」的標準寫法：</p>
+<ul data-path-to-node="9">
+<li>
+<p data-path-to-node="9,0,0">如果直接用 <code data-index-in-node="6" data-path-to-node="9,0,0">INNER JOIN</code>，系統只會顯示「有產生訂單」的顧客，因為 <code data-index-in-node="37" data-path-to-node="9,0,0">INNER JOIN</code> 會剔除所有沒有對應資料的行。</p>
+</li>
+<li>
+<p data-path-to-node="9,1,0">透過 <code data-index-in-node="3" data-path-to-node="9,1,0">LEFT JOIN</code> 並檢查右側資料表是否為 <code data-index-in-node="25" data-path-to-node="9,1,0">NULL</code>，就能精準地把「有訪問紀錄但沒有訂單紀錄」的數據抓出來。</p>
+</li>
+</ul>
+<p></p>
+<p>題目 #5 – 退選的組員</p>
+<pre class="brush:sql;auto-links:false;toolbar:false" contenteditable="false">SELECT student_id
+FROM takes
+WHERE parner_id NOT IN (
+    SELECT student_id FROM takes
+);</pre>
+<p>1. 指令邏輯分析</p>
+<ul data-path-to-node="3">
+<li>
+<p data-path-to-node="3,0,0"><b data-index-in-node="0" data-path-to-node="3,0,0">外層查詢 (Outer Query)</b>：<code data-index-in-node="19" data-path-to-node="3,0,0">SELECT student_id FROM takes</code></p>
+<ul data-path-to-node="3,0,1">
+<li>
+<p data-path-to-node="3,0,1,0,0">從 <code data-index-in-node="2" data-path-to-node="3,0,1,0,0">takes</code> 資料表中選出所有的學生 ID。</p>
+</li>
+</ul>
+</li>
+<li>
+<p data-path-to-node="3,1,0"><b data-index-in-node="0" data-path-to-node="3,1,0">子查詢 (Subquery)</b>：<code data-index-in-node="15" data-path-to-node="3,1,0">SELECT student_id FROM takes</code></p>
+<ul data-path-to-node="3,1,1">
+<li>
+<p data-path-to-node="3,1,1,0,0">這是一個獨立運作的查詢，它先產生了一份所有學生 ID 的完整名單。</p>
+</li>
+</ul>
+</li>
+<li>
+<p data-path-to-node="3,2,0"><b data-index-in-node="0" data-path-to-node="3,2,0"><code data-index-in-node="0" data-path-to-node="3,2,0">WHERE parner_id NOT IN (...)</code></b>：</p>
+<ul data-path-to-node="3,2,1">
+<li>
+<p data-path-to-node="3,2,1,0,0">這是核心邏輯。系統會檢查每一行的 <code data-index-in-node="17" data-path-to-node="3,2,1,0,0">parner_id</code>（合作夥伴 ID）。</p>
+</li>
+<li>
+<p data-path-to-node="3,2,1,1,0">如果這個 <code data-index-in-node="5" data-path-to-node="3,2,1,1,0">parner_id</code> <b data-index-in-node="15" data-path-to-node="3,2,1,1,0">不在</b>剛剛子查詢產生的那個 ID 名單中，條件就會成立（True）。</p>
+</li>
+<li>
+<p data-path-to-node="3,2,1,2,0">這通常用來篩選出無效的合作夥伴連結或處理異常數據。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>2. 執行結果解讀</p>
+<ul data-path-to-node="5">
+<li>
+<p data-path-to-node="5,0,0">結果顯示為 <b data-index-in-node="6" data-path-to-node="5,0,0">3</b> 和 <b data-index-in-node="10" data-path-to-node="5,0,0">6</b>。</p>
+</li>
+<li>
+<p data-path-to-node="5,1,0">這代表在 <code data-index-in-node="5" data-path-to-node="5,1,0">takes</code> 資料表中，學生 3 號和 6 號的 <code data-index-in-node="29" data-path-to-node="5,1,0">parner_id</code> 所指向的那個 ID，並沒有出現在「所有學生 ID」的清單內。</p>
+</li>
+<li>
+<p data-path-to-node="5,2,0"><b data-index-in-node="0" data-path-to-node="5,2,0">資料意義</b>：這在資料庫維護中很常見，是用來檢查「資料一致性」的。比如，如果 <code data-index-in-node="37" data-path-to-node="5,2,0">parner_id</code> 應該要對應到合法的學生 ID，那麼 3 號和 6 號的數據可能就代表了「合作夥伴已離校」或「合作夥伴 ID 輸入錯誤」。</p>
+</li>
+</ul>
+<p>學習建議：關於 NOT IN 的小細節</p>
+<p data-path-to-node="8">使用 <code data-index-in-node="3" data-path-to-node="8">NOT IN</code> 時要特別注意 <b data-index-in-node="17" data-path-to-node="8">NULL 值</b> 的陷阱：</p>
+<ul data-path-to-node="9">
+<li>
+<p data-path-to-node="9,0,0">如果子查詢結果中包含 <code data-index-in-node="11" data-path-to-node="9,0,0">NULL</code> 值，<code data-index-in-node="18" data-path-to-node="9,0,0">NOT IN</code> 運算子可能會導致外層查詢返回空結果（即使實際上有些資料符合條件）。</p>
+</li>
+<li>
+<p data-path-to-node="9,1,0">在處理這類查詢時，如果遇到結果不如預期，可以嘗試加上 <code data-index-in-node="27" data-path-to-node="9,1,0">WHERE parner_id IS NOT NULL</code> 來排除空值影響。</p>
+</li>
+</ul>
+<p></p>
+<p>題目 #6 – 考試通過率</p>
+<p>寫法A 顯示 4 位小數點，無考生時顯示 0.0000 / NULL</p>
+<pre class="brush:sql;auto-links:false;toolbar:false" contenteditable="false">SELECT 
+    t.test_id,
+    ROUND(COUNT(CASE WHEN s.result = 1 THEN 1 END) / COUNT(s.examinee_id), 4) AS pass_rate
+FROM tests t
+LEFT JOIN signups s ON t.test_id = s.test_id
+GROUP BY t.test_id;</pre>
+<p data-path-to-node="0">這段 SQL 指令非常精彩，它展示了如何在資料庫查詢中進行<b data-index-in-node="29" data-path-to-node="0">條件式統計 (Conditional Aggregation)</b> 與<b data-index-in-node="62" data-path-to-node="0">算術計算</b>，用來計算每個測驗的「通過率」。</p>
+<p data-path-to-node="1">以下是詳細的拆解與執行邏輯：</p>
+<p>1. 指令邏輯分析</p>
+<ul data-path-to-node="3">
+<li>
+<p data-path-to-node="3,0,0"><b data-index-in-node="0" data-path-to-node="3,0,0"><code data-index-in-node="0" data-path-to-node="3,0,0">LEFT JOIN</code></b>：將 <code data-index-in-node="12" data-path-to-node="3,0,0">tests</code> 表與 <code data-index-in-node="21" data-path-to-node="3,0,0">signups</code> 表連接，確保即使某個測驗完全沒有人報名，該測驗也會出現在結果中（如結果中的 <code data-index-in-node="67" data-path-to-node="3,0,0">test_id = 3</code>）。</p>
+</li>
+<li>
+<p data-path-to-node="3,1,0"><b data-index-in-node="0" data-path-to-node="3,1,0"><code data-index-in-node="0" data-path-to-node="3,1,0">CASE WHEN s.result = 1 THEN 1 END</code></b>：這是一個非常有用的條件式邏輯。</p>
+<ul data-path-to-node="3,1,1">
+<li>
+<p data-path-to-node="3,1,1,0,0">如果 <code data-index-in-node="3" data-path-to-node="3,1,1,0,0">result</code> 為 1（假設代表通過），則回傳 1。</p>
+</li>
+<li>
+<p data-path-to-node="3,1,1,1,0">如果不為 1，則回傳 <code data-index-in-node="11" data-path-to-node="3,1,1,1,0">NULL</code>（因為沒有 <code data-index-in-node="21" data-path-to-node="3,1,1,1,0">ELSE</code> 子句，預設為 <code data-index-in-node="33" data-path-to-node="3,1,1,1,0">NULL</code>）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p data-path-to-node="3,2,0"><b data-index-in-node="0" data-path-to-node="3,2,0"><code data-index-in-node="0" data-path-to-node="3,2,0">COUNT(...)</code></b>：這也是一個小技巧。<code data-index-in-node="20" data-path-to-node="3,2,0">COUNT</code> 函數會自動忽略 <code data-index-in-node="34" data-path-to-node="3,2,0">NULL</code> 值。因此，<code data-index-in-node="44" data-path-to-node="3,2,0">COUNT(CASE ...)</code> 的結果就是<b data-index-in-node="65" data-path-to-node="3,2,0">所有通過的人數</b>。</p>
+</li>
+<li>
+<p data-path-to-node="3,3,0"><b data-index-in-node="0" data-path-to-node="3,3,0"><code data-index-in-node="0" data-path-to-node="3,3,0">/ COUNT(s.examinee_id)</code></b>：除以總報名人數。</p>
+</li>
+<li>
+<p data-path-to-node="3,4,0"><b data-index-in-node="0" data-path-to-node="3,4,0"><code data-index-in-node="0" data-path-to-node="3,4,0">ROUND(..., 4)</code></b>：將最終算出的比例四捨五入到小數點後 4 位。</p>
+</li>
+</ul>
+<p>2. 執行結果解讀</p>
+<ul data-path-to-node="5">
+<li>
+<p data-path-to-node="5,0,0"><b data-index-in-node="0" data-path-to-node="5,0,0"><code data-index-in-node="0" data-path-to-node="5,0,0">test_id = 1</code></b>：通過率為 <code data-index-in-node="17" data-path-to-node="5,0,0">0.5000</code>（50%）。</p>
+</li>
+<li>
+<p data-path-to-node="5,1,0"><b data-index-in-node="0" data-path-to-node="5,1,0"><code data-index-in-node="0" data-path-to-node="5,1,0">test_id = 2</code></b>：通過率為 <code data-index-in-node="17" data-path-to-node="5,1,0">0.3333</code>（約 33%）。</p>
+</li>
+<li>
+<p data-path-to-node="5,2,0"><b data-index-in-node="0" data-path-to-node="5,2,0"><code data-index-in-node="0" data-path-to-node="5,2,0">test_id = 3</code></b>：顯示為 <code data-index-in-node="16" data-path-to-node="5,2,0">NULL</code>。</p>
+<ul data-path-to-node="5,2,1">
+<li>
+<p data-path-to-node="5,2,1,0,0"><b data-index-in-node="0" data-path-to-node="5,2,1,0,0">為什麼會出現 NULL？</b> 因為該測驗沒有人報名，<code data-index-in-node="24" data-path-to-node="5,2,1,0,0">COUNT</code> 的結果為 0。在 SQL 中，「任何數除以 0」會產生 <code data-index-in-node="58" data-path-to-node="5,2,1,0,0">NULL</code>（或錯誤）。這正是為什麼您會看到 <code data-index-in-node="79" data-path-to-node="5,2,1,0,0">1 warning</code>，這在資料分析中是預期之內的現象。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>寫法B 使用 AVG 函數自動計算布林值平均，無考生時為 NULL</p>
+<pre class="brush:sql;auto-links:false;toolbar:false" contenteditable="false">SELECT 
+    t.test_id,
+    ROUND(COUNT(CASE WHEN s.result = 1 THEN 1 END) / COUNT(s.examinee_id), 4) AS pass_rate
+FROM tests t
+LEFT JOIN signups s ON t.test_id = s.test_id
+GROUP BY t.test_id;</pre>
+<p>1. 條件式統計 (CASE WHEN + COUNT)</p>
+<p data-path-to-node="3">SQL 中的 <code data-index-in-node="7" data-path-to-node="3">COUNT()</code> 函數，其邏輯是：「只會計算非 NULL 的值」。</p>
+<ul data-path-to-node="4">
+<li>
+<p data-path-to-node="4,0,0">您寫的 <code data-index-in-node="4" data-path-to-node="4,0,0">CASE WHEN s.result = 1 THEN 1 END</code>：</p>
+<ul data-path-to-node="4,0,1">
+<li>
+<p data-path-to-node="4,0,1,0,0">當符合條件（通過）時，它會輸出 <code data-index-in-node="16" data-path-to-node="4,0,1,0,0">1</code>。</p>
+</li>
+<li>
+<p data-path-to-node="4,0,1,1,0">當不符合條件（失敗）時，系統預設不寫任何 <code data-index-in-node="21" data-path-to-node="4,0,1,1,0">ELSE</code>，所以它會輸出 <code data-index-in-node="33" data-path-to-node="4,0,1,1,0">NULL</code>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p data-path-to-node="4,1,0">當 <code data-index-in-node="2" data-path-to-node="4,1,0">COUNT()</code> 包住這個 <code data-index-in-node="15" data-path-to-node="4,1,0">CASE</code> 時，它實際上只會統計那些「成功的次數」（因為 NULL 被自動忽略了）。</p>
+</li>
+</ul>
+<p>2. 分母與結果的處理</p>
+<ul data-path-to-node="6">
+<li>
+<p data-path-to-node="6,0,0"><code data-index-in-node="0" data-path-to-node="6,0,0">COUNT(s.examinee_id)</code>：這是統計該測驗「所有報名的人數」（分母）。</p>
+</li>
+<li>
+<p data-path-to-node="6,1,0"><b data-index-in-node="0" data-path-to-node="6,1,0">相除</b>：成功的次數 / 總報名人數 = 通過率。</p>
+</li>
+</ul>
+<p>3. 為甚麼會出現 NULL？（除以零問題）</p>
+<p data-path-to-node="8">當 <code data-index-in-node="2" data-path-to-node="8">test_id = 3</code> 時，因為沒人報名：</p>
+<ul data-path-to-node="9">
+<li>
+<p data-path-to-node="9,0,0">分母 (<code data-index-in-node="4" data-path-to-node="9,0,0">COUNT</code>) 的結果是 <code data-index-in-node="16" data-path-to-node="9,0,0">0</code>。</p>
+</li>
+<li>
+<p data-path-to-node="9,1,0">在數學與資料庫運算中，任何數除以零都是「未定義」的，所以在 MariaDB 中會直接回傳 <code data-index-in-node="45" data-path-to-node="9,1,0">NULL</code>。</p>
+</li>
+</ul>
+<p>總結</p>
+<p data-path-to-node="11">這段語法是用來進行「分組統計」的高級技巧：</p>
+<ul data-path-to-node="12">
+<li>
+<p data-path-to-node="12,0,0"><b data-index-in-node="0" data-path-to-node="12,0,0">不使用</b>多個複雜的子查詢 (Subqueries)。</p>
+</li>
+<li>
+<p data-path-to-node="12,1,0"><b data-index-in-node="0" data-path-to-node="12,1,0">只用一次掃描</b> (Single Pass) 就把每個 <code data-index-in-node="26" data-path-to-node="12,1,0">test_id</code> 的分子（通過數）和分母（總數）算出來。</p>
+</li>
+</ul>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
 <p><span>🌟 絕對重點：交易管理 (Transactions) 與 ACID 屬性</span></p>
 <p><span><labs-tailwind-structural-element-view-v2 _ngcontent-ng-c1501113907="" _nghost-ng-c762376866="" class="ng-star-inserted"><paragraph-element-view _ngcontent-ng-c762376866="" _nghost-ng-c2796307016="" class="ng-star-inserted"></paragraph-element-view></labs-tailwind-structural-element-view-v2></span></p>
 <div _ngcontent-ng-c2796307016="" class="paragraph is-rich-chat-ui normal ng-star-inserted" data-start-index="103"><span _ngcontent-ng-c2796307016="" class="ng-star-inserted" data-start-index="103">在交易處理中，必須確保以下 ACID 屬性，這部分是考試的關鍵：</span></div>
@@ -323,8 +663,7 @@ img.add_border {
 <div class="lg-btn-container"><span class="control lg-btn" data-action="FindAll" id="btnFindAll" title="Find all links on the page">Find All</span></div>
 </div>
 </div>
-</div>
-<br />大二下資料 << <a href='大二下資料.html'>Previous</a> <a href='自然永續發展.html'>Next</a> >> 自然永續發展</div>
+</div><br />大二下資料 << <a href='大二下資料.html'>Previous</a> <a href='自然永續發展.html'>Next</a> >> 自然永續發展</div>
         
     <!-- footer -->
       <div class="container">
