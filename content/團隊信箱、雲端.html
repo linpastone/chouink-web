@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='關於我們.html'>關於我們</a><li class='has-children'><a href='hello world.html'>hello world</a><ul class='dropdown'><li class='has-children'><a href='PVE.html'>PVE</a><ul class='dropdown'><li><a href='PVE備份與還原.html'>PVE備份與還原</a></li></ul><li class='has-children'><a href='webodm.html'>webodm</a><ul class='dropdown'><li><a href='安裝.html'>安裝</a><li><a href='開啟指令.html'>開啟指令</a></li></li></ul></ul><li class='has-children'><a href='個人作業報告.html'>個人作業報告</a><ul class='dropdown'><li class='has-children'><a href='大二下資料.html'>大二下資料</a><ul class='dropdown'><li><a href='資料庫.html'>資料庫</a><li><a href='自然永續發展.html'>自然永續發展</a><li><a href='性別關係.html'>性別關係</a></li></ul><li class='has-children'><a href='大二上期末資料.html'>大二上期末資料</a><ul class='dropdown'><li><a href='藝術史.html'>藝術史</a><li><a href='影像辨識.html'>影像辨識</a></li></li></ul></ul><li class='has-children'><a href='RTET.html'>RTET</a><ul class='dropdown'><li><a href='影片.html'>影片</a><li><a href='canva.html'>canva</a><li><a href='團隊信箱、雲端.html'>團隊信箱、雲端</a><li class='has-children'><a href='vm虛擬機器借用.html'>vm虛擬機器借用</a><ul class='dropdown'><li><a href='借用方式~.html'>借用方式~</a><li><a href='虛擬機器借用狀況.html'>虛擬機器借用狀況</a></li></li></ul></ul><li><a href='新世紀福德正神.html'>新世紀福德正神</a><li><a href='奇怪ㄉ資料.html'>奇怪ㄉ資料</a></li>
+                     <li><a href='關於我們.html'>關於我們</a><li class='has-children'><a href='hello world.html'>hello world</a><ul class='dropdown'><li class='has-children'><a href='PVE.html'>PVE</a><ul class='dropdown'><li><a href='PVE備份與還原.html'>PVE備份與還原</a></li></ul><li class='has-children'><a href='webodm.html'>webodm</a><ul class='dropdown'><li><a href='安裝.html'>安裝</a><li><a href='開啟指令.html'>開啟指令</a></li></li></ul></ul><li class='has-children'><a href='個人作業報告.html'>個人作業報告</a><ul class='dropdown'><li class='has-children'><a href='大二下資料.html'>大二下資料</a><ul class='dropdown'><li><a href='資料庫.html'>資料庫</a><li><a href='自然永續發展.html'>自然永續發展</a><li><a href='性別關係.html'>性別關係</a></li></ul><li class='has-children'><a href='大二上期末資料.html'>大二上期末資料</a><ul class='dropdown'><li><a href='藝術史.html'>藝術史</a><li><a href='影像辨識.html'>影像辨識</a></li></li></ul></ul><li class='has-children'><a href='RTET.html'>RTET</a><ul class='dropdown'><li><a href='影片.html'>影片</a><li><a href='canva.html'>canva</a><li><a href='團隊信箱、雲端.html'>團隊信箱、雲端</a></li></ul><li><a href='新世紀福德正神.html'>新世紀福德正神</a><li><a href='奇怪ㄉ資料.html'>奇怪ㄉ資料</a></li>
                       </ul>
                 </nav>
               </div>
@@ -141,10 +141,46 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">canva << <a href='canva.html'>Previous</a> <a href='vm虛擬機器借用.html'>Next</a> >> vm虛擬機器借用<br /><h1>團隊信箱、雲端</h1>
-<p>目前還在配置中</p>
-<p>將會使用google workspace進行分發</p>
-<br />canva << <a href='canva.html'>Previous</a> <a href='vm虛擬機器借用.html'>Next</a> >> vm虛擬機器借用</div>
+    <div id="tipue_search_content">canva << <a href='canva.html'>Previous</a> <a href='新世紀福德正神.html'>Next</a> >> 新世紀福德正神<br /><h1>團隊信箱、雲端</h1>
+<p>可以到<a href="https://forms.gle/FsBBXkGzVL8xFK3h7">這裡</a>填寫表單取得信箱了喔</p>
+<script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbybxieFXfEoAsUZiG4cMumT1Jzeia1C3UJmVB2gWbHQXsbgxyCpZdzDOPkfuOqB9YRi/exec';
+
+    async function updateVMStatus() {
+        try {
+            const response = await fetch(SCRIPT_URL);
+            const data = await response.json();
+            const listContainer = document.getElementById('vm-list');
+            
+            let htmlContent = '<ul style="list-style: none; padding: 0;">';
+            
+            // 跳過第一列標題，處理剩餘資料
+            data.slice(1).forEach(row => {
+                const [name, status, user, time] = row;
+                const isBusy = (status === 'busy');
+                const dotColor = isBusy ? '#ff4d4d' : '#2ecc71'; // 紅色或綠色
+                const statusText = isBusy ? `使用中 (使用者: ${user})` : '可借用';
+
+                htmlContent += `
+                    <li style="margin-bottom: 10px; padding: 10px; background: white; border-left: 5px solid ${dotColor};">
+                        <strong>${name}</strong>: ${statusText} <br>
+                        <small style="color: #999;">最後更新: ${new Date(time).toLocaleString()}</small>
+                    </li>`;
+            });
+
+            htmlContent += '</ul>';
+            listContainer.innerHTML = htmlContent;
+        } catch (e) {
+            console.error('VM 狀態讀取失敗:', e);
+            document.getElementById('vm-list').innerText = '狀態讀取失敗';
+        }
+    }
+
+    // 每 15 秒自動刷新一次
+    setInterval(updateVMStatus, 2000);
+    updateVMStatus(); // 網頁載入時立即執行一次
+</script>
+<br />canva << <a href='canva.html'>Previous</a> <a href='新世紀福德正神.html'>Next</a> >> 新世紀福德正神</div>
         
     <!-- footer -->
       <div class="container">
